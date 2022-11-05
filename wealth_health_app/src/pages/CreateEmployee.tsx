@@ -1,5 +1,8 @@
+import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import Button from "../components/Button"
+import InputCustom from "../components/InputCustom"
+import ValidInput from "../utils/ValidInput"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -19,14 +22,11 @@ const ImageContainer = styled.div`
 		display: none;
 	}
 `
-
 const Image = styled.img`
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
 `
-const Form = styled.form``
-
 const Infos = styled.h2`
 	color: #6e8614;
 	width: 100%;
@@ -43,33 +43,20 @@ const Label = styled.label`
 		font-size: 16px;
 	}
 `
-const GlobalInputStyle = {
-	height: "30px",
-	borderRadius: "15px",
-	border: "none",
-	padding: "10px",
-	fontSize: "16px",
-	fontWeight: "600",
-	color: "#6e8614"
-}
 const Input = styled.input`
+	height: 30px;
+	border-radius: 15px;
+	border: none;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #6e8614;
 	width: 65%;
 	min-width: 150px;
-	${GlobalInputStyle}
 	@media screen and (max-width: 760px) {
 		font-size: 14px;
 	}
 `
-const InputInField = styled.input`
-	width: 70%;
-	max-width: 300px;
-	min-width: 150px;
-	${GlobalInputStyle}
-	@media screen and (max-width: 760px) {
-		font-size: 16px;
-	}
-`
-
 const GlobalInputContainerStyle = {
 	display: "flex",
 	alignItems: "center",
@@ -117,73 +104,168 @@ const BottomForm = styled.div`
 	@media screen and (min-width: 1600px) {
 	}
 `
-const GlobalBtnStyle = {
-	width: "100px",
-	height: "30px",
-	fontSize: "16px",
-	fontWeight: "600",
-	borderRadius: "15px",
-	border: "none",
-	boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-	cursor: "pointer"
-}
-const CancelBtn = styled.button`
-	${GlobalBtnStyle}
-	color: #6e8614;
-	background-color: #ffffff;
-	margin-right: 20px;
-`
-const RegisterBtn = styled.button`
-	${GlobalBtnStyle}
-	color:#ffffff;
-	background-color: #93ad18;
-`
 const BlocPage = styled.div`
 	display: flex;
 	height: 100vh;
 `
+
 function CreateEmployee(props: { title: string }) {
 	document.title = props.title
+	// const [firstname, setFirstName] = useState("")
+	// const [lastName, setLastName] = useState("")
+	// const [birthday, setBirthday] = useState<null | string>(null)
+	// const [startDate, setStartDate] = useState<null | string>(null)
+	// const [city, setCity] = useState<null | string>(null)
+	// const [street, setStreet] = useState<null | string>(null)
+	// const [zipCode, setZipCode] = useState<null | string>(null)
 	
+	const [inputValues, setInputValues] = useState({
+		firstname: "",
+		lastname: "",
+		birthday: "",
+		startdate: "",
+		city: "",
+		street: "",
+		zipcode: ""
+	})
+
+	const [isValidFirstname, setIsValidFirstname] = useState<null | boolean>(null)
+	const [isValidLastname, setIsValidLastname] = useState<null | boolean>(null)
+	const [isValidBirthday, setIsValidBirthday] = useState<null | boolean>(null)
+	const [isValidStartDate, setIsValidStartDate] = useState<null | boolean>(null)
+	const [isValidCity, setIsValidCity] = useState<null | boolean>(null)
+	const [isValidStreet, setIsValidStreet] = useState<null | boolean>(null)
+	const [isValidZipCode, setIsValidZipCode] = useState<null | boolean>(null)
+
+	const areInputsValid = [
+		isValidFirstname,
+		isValidLastname,
+		isValidBirthday,
+		isValidCity,
+		isValidStreet,
+		isValidZipCode
+	]
+
+	// const formData = {
+	// 	// firstname,
+	// 	// lastName,
+	// 	// birthday,
+	// 	// startDate,
+	// 	// city,
+	// 	// street,
+	// 	// zipCode
+	// }
+	
+	const handleSubmit = (e: { preventDefault: () => void }) => {
+		e.preventDefault()
+		console.log(areInputsValid)
+		if (areInputsValid.every((isValidInput) => isValidInput)) {
+			console.log("SendForm")
+		} else {
+			console.log("no")
+		}
+	}
+
 	return (
 		<>
 			<BlocPage>
 				<FormContainer>
-					<Form>
+					<form onSubmit={handleSubmit}>
 						<Infos>Informations</Infos>
 						<InfosInputContainer>
 							<Label htmlFor="firstName">First name</Label>
-							<Input type="text" id="firstName" name="firsName" />
+							<InputCustom
+								isValid={isValidFirstname}
+								placeholder="Firstname"
+								type="text"
+								id="firstName"
+								name="firsName"
+								zipcodeInput={false}
+								// setValueOnChange={setFirstName}
+								setValueOnBlur={setIsValidFirstname}
+							/>
 						</InfosInputContainer>
 						<InfosInputContainer>
 							<Label htmlFor="lastName">Last name</Label>
-							<Input type="text" id="lastName" name="lastName" />
+							<InputCustom
+								isValid={isValidLastname}
+								placeholder="Lastname"
+								type="text"
+								id="lastName"
+								name="lastName"
+								zipcodeInput={false}
+								setValueOnBlur={setIsValidLastname}
+								// setValueOnChange={setLastName}
+							/>
 						</InfosInputContainer>
 						<InfosInputContainer>
 							<Label htmlFor="birthday">Birdthday</Label>
-							<Input type="date" id="birthday" name="birthday" />
+							<InputCustom
+								isValid={isValidBirthday}
+								type="date"
+								id="birthday"
+								name="birthday"
+								zipcodeInput={false}
+								setValueOnBlur={setIsValidBirthday}
+								// setValueOnChange={setBirthday}
+							/>
 						</InfosInputContainer>
 						<InfosInputContainer>
 							<Label htmlFor="startDate">Start Date</Label>
-							<Input type="date" id="startDate" name="startDate" />
+							<InputCustom
+								isValid={isValidStartDate}
+								type="date"
+								id="startDate"
+								name="startDate"
+								zipcodeInput={false}
+								setValueOnBlur={setIsValidStartDate}
+								// setValueOnChange={setStartDate}
+							/>
 						</InfosInputContainer>
 						<FieldSet>
 							<Legend>Address</Legend>
 							<InputContainerInField>
 								<Label htmlFor="state">State</Label>
-								<InputInField type="text" id="state" name="state" />
+								<Input type="text" id="state" name="state" />
 							</InputContainerInField>
 							<InputContainerInField>
 								<Label htmlFor="city">City</Label>
-								<InputInField type="text" id="city" name="city" />
+								<InputCustom
+									isValid={isValidCity}
+									placeholder="CITY"
+									type="text"
+									id="city"
+									name="city"
+									zipcodeInput={false}
+									setValueOnBlur={setIsValidCity}
+									// setValueOnChange={setCity}
+								/>
 							</InputContainerInField>
 							<InputContainerInField>
 								<Label htmlFor="street">Street</Label>
-								<InputInField type="text" id="street" name="street" />
+								<InputCustom
+									isValid={isValidStreet}
+									placeholder="5 rue des champs"
+									type="text"
+									id="street"
+									name="street"
+									zipcodeInput={false}
+									setValueOnBlur={setIsValidStreet}
+									// setValueOnChange={setStreet}
+								/>
 							</InputContainerInField>
 							<InputContainerInField>
 								<Label htmlFor="zipCode">Zip code</Label>
-								<InputInField type="text" id="zipCode" name="zipCode" />
+								<InputCustom
+									isValid={isValidZipCode}
+									placeholder="eg: 16100"
+									type="text"
+									id="zipCode"
+									name="zipCode"
+									zipcodeInput={true}
+									setValueOnBlur={setIsValidZipCode}
+									// setValueOnChange={setZipCode}
+								/>
 							</InputContainerInField>
 						</FieldSet>
 						<BottomForm>
@@ -192,11 +274,21 @@ function CreateEmployee(props: { title: string }) {
 								<Input type="text" id="department" name="department" />
 							</InfosInputContainer>
 							<ButtonContainer>
-								<Button role="cancel" textColor="#6e8615" background="#ffffff" />
-								<Button role="register" textColor="#ffffff" background="#6e8615" />
+								<Button
+									type="reset"
+									role="cancel"
+									textColor="#6e8615"
+									background="#ffffff"
+								/>
+								<Button
+									type="submit"
+									role="register"
+									textColor="#ffffff"
+									background="#6e8615"
+								/>
 							</ButtonContainer>
 						</BottomForm>
-					</Form>
+					</form>
 				</FormContainer>
 				<ImageContainer>
 					<Image src="/src/assets/wealth_health_location.jpg" />
@@ -207,3 +299,5 @@ function CreateEmployee(props: { title: string }) {
 }
 
 export default CreateEmployee
+
+//NEED TO IMPLEMENT DROPDOWN FOR STATE AND DEPARTMENT
