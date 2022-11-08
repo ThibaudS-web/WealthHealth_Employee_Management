@@ -35,22 +35,19 @@ function InputCustom(props: {
 	id: string
 	name: string
 	zipcodeInput: boolean
-	isValid: boolean | null
 	setValueOnChange: Function
 	setValueOnBlur: Function
+	error: Function
 }) {
-	const { type, id, name, zipcodeInput, placeholder, isValid, setValueOnBlur, setValueOnChange } =
+	const { type, id, name, zipcodeInput, placeholder, setValueOnBlur, setValueOnChange, error } =
 		props
 
-	const inputValidation = new ValidInput()
-	const error = new ErrorMessage()
-
 	const [errorMessage, setErrorMessage] = useState<null | string>(null)
+	const [isValid, setIsValid] = useState<null | boolean>(null)
 
 	const handleOnBlur = (e: FocusEvent<HTMLInputElement, Element>) => {
-		setValueOnBlur(inputValidation.isValidInput(e.target.value, id))
-		setErrorMessage(error.getErrorMessage(e.target.value, id))
-		console.log(error.getErrorMessage(e.target.value, id))
+		setIsValid(setValueOnBlur(e, id))
+		setErrorMessage(error(e, id))
 	}
 
 	return (

@@ -15,6 +15,8 @@ class ValidInput {
 				return this.isStreetValid(value)
 			case "zipCode":
 				return this.isZipCodeValid(value)
+			default:
+				throw new Error('unknown input')
 		}
 	}
 

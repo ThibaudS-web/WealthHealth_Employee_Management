@@ -114,34 +114,16 @@ const BlocPage = styled.div`
 function CreateEmployee(props: { title: string }) {
 	document.title = props.title
 
-	const { handleChange, values } = useForm()
-
-	const [isValidFirstname, setIsValidFirstname] = useState<null | boolean>(null)
-	const [isValidLastname, setIsValidLastname] = useState<null | boolean>(null)
-	const [isValidBirthday, setIsValidBirthday] = useState<null | boolean>(null)
-	const [isValidStartDate, setIsValidStartDate] = useState<null | boolean>(null)
-	const [isValidCity, setIsValidCity] = useState<null | boolean>(null)
-	const [isValidStreet, setIsValidStreet] = useState<null | boolean>(null)
-	const [isValidZipCode, setIsValidZipCode] = useState<null | boolean>(null)
-
-	const areInputsValid = [
-		isValidFirstname,
-		isValidLastname,
-		isValidBirthday,
-		isValidCity,
-		isValidStreet,
-		isValidZipCode
-	]
+	//Custom Hook for handle form features
+	const { handleChange, values, isValid, getError, getIsValidateForm } = useForm()
 
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault()
 
-		const checkAllInputs = areInputsValid.every((isValidInput) => isValidInput)
-
-		if (checkAllInputs) {
+		if (getIsValidateForm()) {
 			console.log("form sent!", values)
 		} else {
-			console.log("form invalid!")
+			console.log("form invalid!", values)
 		}
 	}
 
@@ -154,50 +136,50 @@ function CreateEmployee(props: { title: string }) {
 						<InfosInputContainer>
 							<Label htmlFor="firstName">First name</Label>
 							<InputCustom
-								isValid={isValidFirstname}
 								placeholder="Firstname"
 								type="text"
 								id="firstName"
 								name="firstName"
 								zipcodeInput={false}
+								error={getError}
 								setValueOnChange={handleChange}
-								setValueOnBlur={setIsValidFirstname}
+								setValueOnBlur={isValid}
 							/>
 						</InfosInputContainer>
 						<InfosInputContainer>
 							<Label htmlFor="lastName">Last name</Label>
 							<InputCustom
-								isValid={isValidLastname}
 								placeholder="Lastname"
 								type="text"
 								id="lastName"
 								name="lastName"
 								zipcodeInput={false}
-								setValueOnBlur={setIsValidLastname}
+								error={getError}
+								setValueOnBlur={isValid}
 								setValueOnChange={handleChange}
 							/>
 						</InfosInputContainer>
 						<InfosInputContainer>
 							<Label htmlFor="birthday">Birdthday</Label>
 							<InputCustom
-								isValid={isValidBirthday}
 								type="date"
 								id="birthday"
 								name="birthday"
 								zipcodeInput={false}
-								setValueOnBlur={setIsValidBirthday}
+								error={getError}
+								setValueOnBlur={isValid}
 								setValueOnChange={handleChange}
 							/>
 						</InfosInputContainer>
 						<InfosInputContainer>
 							<Label htmlFor="startDate">Start Date</Label>
 							<InputCustom
-								isValid={isValidStartDate}
 								type="date"
 								id="startDate"
 								name="startDate"
 								zipcodeInput={false}
-								setValueOnBlur={setIsValidStartDate}
+								error={getError}
+								setValueOnBlur={isValid}
 								setValueOnChange={handleChange}
 							/>
 						</InfosInputContainer>
@@ -210,39 +192,39 @@ function CreateEmployee(props: { title: string }) {
 							<InputContainerInField>
 								<Label htmlFor="city">City</Label>
 								<InputCustom
-									isValid={isValidCity}
 									placeholder="CITY"
 									type="text"
 									id="city"
 									name="city"
 									zipcodeInput={false}
-									setValueOnBlur={setIsValidCity}
+									error={getError}
+									setValueOnBlur={isValid}
 									setValueOnChange={handleChange}
 								/>
 							</InputContainerInField>
 							<InputContainerInField>
 								<Label htmlFor="street">Street</Label>
 								<InputCustom
-									isValid={isValidStreet}
 									placeholder="5 rue des champs"
 									type="text"
 									id="street"
 									name="street"
 									zipcodeInput={false}
-									setValueOnBlur={setIsValidStreet}
+									error={getError}
+									setValueOnBlur={isValid}
 									setValueOnChange={handleChange}
 								/>
 							</InputContainerInField>
 							<InputContainerInField>
 								<Label htmlFor="zipCode">Zip code</Label>
 								<InputCustom
-									isValid={isValidZipCode}
 									placeholder="eg: 16100"
 									type="text"
 									id="zipCode"
 									name="zipCode"
 									zipcodeInput={true}
-									setValueOnBlur={setIsValidZipCode}
+									error={getError}
+									setValueOnBlur={isValid}
 									setValueOnChange={handleChange}
 								/>
 							</InputContainerInField>
