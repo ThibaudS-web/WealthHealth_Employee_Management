@@ -35,11 +35,12 @@ function InputCustom(props: {
 	id: string
 	name: string
 	zipcodeInput: boolean
-	// setValueOnChange: any
 	isValid: boolean | null
-	setValueOnBlur: any
+	setValueOnChange: Function
+	setValueOnBlur: Function
 }) {
-	const { type, id, name, zipcodeInput, placeholder, isValid, setValueOnBlur } = props
+	const { type, id, name, zipcodeInput, placeholder, isValid, setValueOnBlur, setValueOnChange } =
+		props
 
 	const inputValidation = new ValidInput()
 	const error = new ErrorMessage()
@@ -52,8 +53,6 @@ function InputCustom(props: {
 		console.log(error.getErrorMessage(e.target.value, id))
 	}
 
-	console.log("isValid: ", isValid, "errorMessage: ", errorMessage)
-	console.log(Boolean(!isValid && errorMessage))
 	return (
 		<>
 			{zipcodeInput ? (
@@ -65,7 +64,9 @@ function InputCustom(props: {
 					type={type}
 					id={id}
 					name={name}
-					// onChange={(e) => setValueOnChange(e.target.value)}
+					onChange={(e) => {
+						setValueOnChange(e)
+					}}
 					onBlur={(e) => {
 						handleOnBlur(e)
 					}}
@@ -74,9 +75,9 @@ function InputCustom(props: {
 				<Input
 					isValid={isValid}
 					placeholder={placeholder}
-					// onChange={(e) => {
-					// 	setValueOnChange(e.target.value)
-					// }}
+					onChange={(e) => {
+						setValueOnChange(e)
+					}}
 					onBlur={(e) => {
 						handleOnBlur(e)
 					}}

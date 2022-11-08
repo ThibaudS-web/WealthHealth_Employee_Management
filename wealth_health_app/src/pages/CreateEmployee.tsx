@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Button from "../components/Button"
 import InputCustom from "../components/InputCustom"
 import ValidInput from "../utils/ValidInput"
+import useForm from "../utils/hooks"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -112,23 +113,8 @@ const BlocPage = styled.div`
 
 function CreateEmployee(props: { title: string }) {
 	document.title = props.title
-	// const [firstname, setFirstName] = useState("")
-	// const [lastName, setLastName] = useState("")
-	// const [birthday, setBirthday] = useState<null | string>(null)
-	// const [startDate, setStartDate] = useState<null | string>(null)
-	// const [city, setCity] = useState<null | string>(null)
-	// const [street, setStreet] = useState<null | string>(null)
-	// const [zipCode, setZipCode] = useState<null | string>(null)
 
-	const [inputValues, setInputValues] = useState({
-		firstname: "",
-		lastname: "",
-		birthday: "",
-		startdate: "",
-		city: "",
-		street: "",
-		zipcode: ""
-	})
+	const { handleChange, values } = useForm()
 
 	const [isValidFirstname, setIsValidFirstname] = useState<null | boolean>(null)
 	const [isValidLastname, setIsValidLastname] = useState<null | boolean>(null)
@@ -147,23 +133,13 @@ function CreateEmployee(props: { title: string }) {
 		isValidZipCode
 	]
 
-	// const formData = {
-	// 	// firstname,
-	// 	// lastName,
-	// 	// birthday,
-	// 	// startDate,
-	// 	// city,
-	// 	// street,
-	// 	// zipCode
-	// }
-
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault()
 
 		const checkAllInputs = areInputsValid.every((isValidInput) => isValidInput)
 
 		if (checkAllInputs) {
-			console.log("form sent!")
+			console.log("form sent!", values)
 		} else {
 			console.log("form invalid!")
 		}
@@ -182,9 +158,9 @@ function CreateEmployee(props: { title: string }) {
 								placeholder="Firstname"
 								type="text"
 								id="firstName"
-								name="firsName"
+								name="firstName"
 								zipcodeInput={false}
-								// setValueOnChange={setFirstName}
+								setValueOnChange={handleChange}
 								setValueOnBlur={setIsValidFirstname}
 							/>
 						</InfosInputContainer>
@@ -198,7 +174,7 @@ function CreateEmployee(props: { title: string }) {
 								name="lastName"
 								zipcodeInput={false}
 								setValueOnBlur={setIsValidLastname}
-								// setValueOnChange={setLastName}
+								setValueOnChange={handleChange}
 							/>
 						</InfosInputContainer>
 						<InfosInputContainer>
@@ -210,7 +186,7 @@ function CreateEmployee(props: { title: string }) {
 								name="birthday"
 								zipcodeInput={false}
 								setValueOnBlur={setIsValidBirthday}
-								// setValueOnChange={setBirthday}
+								setValueOnChange={handleChange}
 							/>
 						</InfosInputContainer>
 						<InfosInputContainer>
@@ -222,7 +198,7 @@ function CreateEmployee(props: { title: string }) {
 								name="startDate"
 								zipcodeInput={false}
 								setValueOnBlur={setIsValidStartDate}
-								// setValueOnChange={setStartDate}
+								setValueOnChange={handleChange}
 							/>
 						</InfosInputContainer>
 						<FieldSet>
@@ -241,7 +217,7 @@ function CreateEmployee(props: { title: string }) {
 									name="city"
 									zipcodeInput={false}
 									setValueOnBlur={setIsValidCity}
-									// setValueOnChange={setCity}
+									setValueOnChange={handleChange}
 								/>
 							</InputContainerInField>
 							<InputContainerInField>
@@ -254,7 +230,7 @@ function CreateEmployee(props: { title: string }) {
 									name="street"
 									zipcodeInput={false}
 									setValueOnBlur={setIsValidStreet}
-									// setValueOnChange={setStreet}
+									setValueOnChange={handleChange}
 								/>
 							</InputContainerInField>
 							<InputContainerInField>
@@ -267,7 +243,7 @@ function CreateEmployee(props: { title: string }) {
 									name="zipCode"
 									zipcodeInput={true}
 									setValueOnBlur={setIsValidZipCode}
-									// setValueOnChange={setZipCode}
+									setValueOnChange={handleChange}
 								/>
 							</InputContainerInField>
 						</FieldSet>
