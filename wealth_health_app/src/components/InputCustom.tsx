@@ -1,17 +1,22 @@
-import { FocusEvent, useEffect, useRef, useState } from "react"
+import { FocusEvent, useEffect, useState } from "react"
 import styled from "styled-components"
 import ErrorMessage from "../utils/ErrorMessage"
 import ValidInput from "../utils/ValidInput"
 
-const Input = styled.input`
+interface IInput {
+	isValid: boolean | null
+}
+
+const Input = styled.input<IInput>`
 	height: 30px;
 	border-radius: 15px;
-	border: none;
+	border: ${(props) => (props.isValid || props.isValid === null ? "none" : "2px red solid")};
 	padding: 10px;
 	font-size: 16px;
 	font-weight: 600;
 	color: #6e8614;
 	width: 65%;
+	margin-bottom: 10px;
 	min-width: 150px;
 	::placeholder {
 		opacity: 0.4;
@@ -47,10 +52,13 @@ function InputCustom(props: {
 		console.log(error.getErrorMessage(e.target.value, id))
 	}
 
+	console.log("isValid: ", isValid, "errorMessage: ", errorMessage)
+	console.log(Boolean(!isValid && errorMessage))
 	return (
 		<>
 			{zipcodeInput ? (
 				<Input
+					isValid={isValid}
 					placeholder={placeholder}
 					maxLength={5}
 					minLength={5}
@@ -64,6 +72,7 @@ function InputCustom(props: {
 				/>
 			) : (
 				<Input
+					isValid={isValid}
 					placeholder={placeholder}
 					// onChange={(e) => {
 					// 	setValueOnChange(e.target.value)
@@ -76,7 +85,7 @@ function InputCustom(props: {
 					name={name}
 				/>
 			)}
-			<Error>{isValid !== null && !isValid ? `${errorMessage}` : ""}</Error>
+			{!isValid && errorMessage && <Error>{errorMessage}</Error>}
 		</>
 	)
 }

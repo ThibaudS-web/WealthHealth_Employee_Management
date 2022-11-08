@@ -37,6 +37,7 @@ const Infos = styled.h2`
 `
 const Label = styled.label`
 	font-size: 20px;
+	align-self: flex-start;
 	color: white;
 	font-weight: 500;
 	@media screen and (max-width: 760px) {
@@ -60,19 +61,19 @@ const Input = styled.input`
 const GlobalInputContainerStyle = {
 	display: "flex",
 	alignItems: "center",
-	marginBottom: "20px"
+	marginBottom: "20px",
+	justifyContent: "space-between",
+	minWidth: "215px"
 }
 
 const InfosInputContainer = styled.div`
-	min-width: 215px;
 	max-width: 350px;
-	justify-content: space-between;
+	flex-wrap: wrap;
 	${GlobalInputContainerStyle}
 `
 const InputContainerInField = styled.div`
-	justify-content: space-between;
+	flex-wrap: wrap;
 	width: 100%;
-	min-width: 215px;
 	max-width: 450px;
 	${GlobalInputContainerStyle}
 `
@@ -118,7 +119,7 @@ function CreateEmployee(props: { title: string }) {
 	// const [city, setCity] = useState<null | string>(null)
 	// const [street, setStreet] = useState<null | string>(null)
 	// const [zipCode, setZipCode] = useState<null | string>(null)
-	
+
 	const [inputValues, setInputValues] = useState({
 		firstname: "",
 		lastname: "",
@@ -155,14 +156,16 @@ function CreateEmployee(props: { title: string }) {
 	// 	// street,
 	// 	// zipCode
 	// }
-	
+
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault()
-		console.log(areInputsValid)
-		if (areInputsValid.every((isValidInput) => isValidInput)) {
-			console.log("SendForm")
+
+		const checkAllInputs = areInputsValid.every((isValidInput) => isValidInput)
+
+		if (checkAllInputs) {
+			console.log("form sent!")
 		} else {
-			console.log("no")
+			console.log("form invalid!")
 		}
 	}
 
