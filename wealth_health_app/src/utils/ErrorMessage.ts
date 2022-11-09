@@ -11,8 +11,7 @@ class ErrorMessage {
 	}
 
 	private getErrorDate(value: string) {
-        if (value.length === 0) return this.emptyInput
-        return 'Hello'
+		if (value.length === 0) return this.emptyInput
 	}
 
 	private getErrorStreet(value: string) {

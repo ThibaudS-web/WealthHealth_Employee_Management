@@ -38,7 +38,7 @@ class ValidInput {
 
 	private isCityValid(value: string): boolean {
 		//Only UPPERCASE
-		const cityRegExp = new RegExp("[A-Z-'\u00C0-\u017Fs]{3,20}$", "g")
+		const cityRegExp = new RegExp("[A-Z-'\u00C0-\u017F ]{3,20}$", "g")
 		return cityRegExp.test(value)
 	}
 

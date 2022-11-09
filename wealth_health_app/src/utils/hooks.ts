@@ -49,7 +49,7 @@ function useForm() {
 		return Object.values(validSuccessForm).every((el) => el)
 	}
 
-	const getError = (e: { target: { value: any } }, id: string): string => {
+	const getError = (e: { target: { value: string } }, id: string): string => {
 		const { value } = e.target
 		return error.getErrorMessage(value, id)
 	}
