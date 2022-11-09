@@ -7,10 +7,8 @@ const Container = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	height: 100%;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	flex-direction: column;
-	position: sticky;
 	z-index: 1;
 `
 const Logo = styled.img`

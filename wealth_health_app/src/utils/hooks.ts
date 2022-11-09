@@ -7,13 +7,13 @@ function useForm() {
 	const error = new ErrorMessage()
 
 	const [values, setValues] = useState({
-		firstName: "",
-		lastName: "",
-		birthday: "",
-		startDate: "",
-		city: "",
-		street: "",
-		zipCode: ""
+		firstName: null,
+		lastName: null,
+		birthday: null,
+		startDate: null,
+		city: null,
+		street: null,
+		zipCode: null
 	})
 
 	const [validSuccessForm, setValidSuccessForm] = useState({
@@ -26,15 +26,16 @@ function useForm() {
 		zipCode: null
 	})
 
-	const handleChange = (e: any) => {
+	const handleChange = (e: { target: { name: string; value: string } }) => {
 		const { name, value } = e.target
 		setValues({
 			...values,
 			[name]: value
 		})
+		console.log(values)
 	}
 
-	const isValid = (e: any, id: string) => {
+	const isValid = (e: { target: { name: string; value: string } }, id: string) => {
 		const { name, value } = e.target
 		const isValid = inputValidation.isValidInput(value, id)
 		setValidSuccessForm({
@@ -48,7 +49,7 @@ function useForm() {
 		return Object.values(validSuccessForm).every((el) => el)
 	}
 
-	const getError = (e: any, id: string): string => {
+	const getError = (e: { target: { value: any } }, id: string): string => {
 		const { value } = e.target
 		return error.getErrorMessage(value, id)
 	}

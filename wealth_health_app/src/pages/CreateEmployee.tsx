@@ -1,8 +1,6 @@
-import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import Button from "../components/Button"
 import InputCustom from "../components/InputCustom"
-import ValidInput from "../utils/ValidInput"
 import useForm from "../utils/hooks"
 
 const FormContainer = styled.div`
@@ -12,6 +10,8 @@ const FormContainer = styled.div`
 	padding: 25px;
 	display: flex;
 	flex-direction: column;
+	overflow-y: auto;
+
 	@media screen and (max-width: 800px) {
 		width: 100%;
 	}
@@ -106,10 +106,6 @@ const BottomForm = styled.div`
 	@media screen and (min-width: 1600px) {
 	}
 `
-const BlocPage = styled.div`
-	display: flex;
-	height: 100vh;
-`
 
 function CreateEmployee(props: { title: string }) {
 	document.title = props.title
@@ -129,132 +125,130 @@ function CreateEmployee(props: { title: string }) {
 
 	return (
 		<>
-			<BlocPage>
-				<FormContainer>
-					<form onSubmit={handleSubmit}>
-						<Infos>Informations</Infos>
-						<InfosInputContainer>
-							<Label htmlFor="firstName">First name</Label>
+			<FormContainer>
+				<form onSubmit={handleSubmit}>
+					<Infos>Informations</Infos>
+					<InfosInputContainer>
+						<Label htmlFor="firstName">First name</Label>
+						<InputCustom
+							placeholder="Firstname"
+							type="text"
+							id="firstName"
+							name="firstName"
+							zipcodeInput={false}
+							error={getError}
+							setValueOnChange={handleChange}
+							setValueOnBlur={isValid}
+						/>
+					</InfosInputContainer>
+					<InfosInputContainer>
+						<Label htmlFor="lastName">Last name</Label>
+						<InputCustom
+							placeholder="Lastname"
+							type="text"
+							id="lastName"
+							name="lastName"
+							zipcodeInput={false}
+							error={getError}
+							setValueOnBlur={isValid}
+							setValueOnChange={handleChange}
+						/>
+					</InfosInputContainer>
+					<InfosInputContainer>
+						<Label htmlFor="birthday">Birdthday</Label>
+						<InputCustom
+							type="date"
+							id="birthday"
+							name="birthday"
+							zipcodeInput={false}
+							error={getError}
+							setValueOnBlur={isValid}
+							setValueOnChange={handleChange}
+						/>
+					</InfosInputContainer>
+					<InfosInputContainer>
+						<Label htmlFor="startDate">Start Date</Label>
+						<InputCustom
+							type="date"
+							id="startDate"
+							name="startDate"
+							zipcodeInput={false}
+							error={getError}
+							setValueOnBlur={isValid}
+							setValueOnChange={handleChange}
+						/>
+					</InfosInputContainer>
+					<FieldSet>
+						<Legend>Address</Legend>
+						<InputContainerInField>
+							<Label htmlFor="state">State</Label>
+							<Input type="text" id="state" name="state" />
+						</InputContainerInField>
+						<InputContainerInField>
+							<Label htmlFor="city">City</Label>
 							<InputCustom
-								placeholder="Firstname"
+								placeholder="CITY"
 								type="text"
-								id="firstName"
-								name="firstName"
+								id="city"
+								name="city"
 								zipcodeInput={false}
 								error={getError}
-								setValueOnChange={handleChange}
 								setValueOnBlur={isValid}
+								setValueOnChange={handleChange}
 							/>
-						</InfosInputContainer>
-						<InfosInputContainer>
-							<Label htmlFor="lastName">Last name</Label>
+						</InputContainerInField>
+						<InputContainerInField>
+							<Label htmlFor="street">Street</Label>
 							<InputCustom
-								placeholder="Lastname"
+								placeholder="5 rue des champs"
 								type="text"
-								id="lastName"
-								name="lastName"
+								id="street"
+								name="street"
 								zipcodeInput={false}
 								error={getError}
 								setValueOnBlur={isValid}
 								setValueOnChange={handleChange}
 							/>
-						</InfosInputContainer>
-						<InfosInputContainer>
-							<Label htmlFor="birthday">Birdthday</Label>
+						</InputContainerInField>
+						<InputContainerInField>
+							<Label htmlFor="zipCode">Zip code</Label>
 							<InputCustom
-								type="date"
-								id="birthday"
-								name="birthday"
-								zipcodeInput={false}
+								placeholder="eg: 16100"
+								type="text"
+								id="zipCode"
+								name="zipCode"
+								zipcodeInput={true}
 								error={getError}
 								setValueOnBlur={isValid}
 								setValueOnChange={handleChange}
 							/>
-						</InfosInputContainer>
+						</InputContainerInField>
+					</FieldSet>
+					<BottomForm>
 						<InfosInputContainer>
-							<Label htmlFor="startDate">Start Date</Label>
-							<InputCustom
-								type="date"
-								id="startDate"
-								name="startDate"
-								zipcodeInput={false}
-								error={getError}
-								setValueOnBlur={isValid}
-								setValueOnChange={handleChange}
-							/>
+							<Label htmlFor="department">Department</Label>
+							<Input type="text" id="department" name="department" />
 						</InfosInputContainer>
-						<FieldSet>
-							<Legend>Address</Legend>
-							<InputContainerInField>
-								<Label htmlFor="state">State</Label>
-								<Input type="text" id="state" name="state" />
-							</InputContainerInField>
-							<InputContainerInField>
-								<Label htmlFor="city">City</Label>
-								<InputCustom
-									placeholder="CITY"
-									type="text"
-									id="city"
-									name="city"
-									zipcodeInput={false}
-									error={getError}
-									setValueOnBlur={isValid}
-									setValueOnChange={handleChange}
-								/>
-							</InputContainerInField>
-							<InputContainerInField>
-								<Label htmlFor="street">Street</Label>
-								<InputCustom
-									placeholder="5 rue des champs"
-									type="text"
-									id="street"
-									name="street"
-									zipcodeInput={false}
-									error={getError}
-									setValueOnBlur={isValid}
-									setValueOnChange={handleChange}
-								/>
-							</InputContainerInField>
-							<InputContainerInField>
-								<Label htmlFor="zipCode">Zip code</Label>
-								<InputCustom
-									placeholder="eg: 16100"
-									type="text"
-									id="zipCode"
-									name="zipCode"
-									zipcodeInput={true}
-									error={getError}
-									setValueOnBlur={isValid}
-									setValueOnChange={handleChange}
-								/>
-							</InputContainerInField>
-						</FieldSet>
-						<BottomForm>
-							<InfosInputContainer>
-								<Label htmlFor="department">Department</Label>
-								<Input type="text" id="department" name="department" />
-							</InfosInputContainer>
-							<ButtonContainer>
-								<Button
-									type="reset"
-									role="cancel"
-									textColor="#6e8615"
-									background="#ffffff"
-								/>
-								<Button
-									type="submit"
-									role="register"
-									textColor="#ffffff"
-									background="#6e8615"
-								/>
-							</ButtonContainer>
-						</BottomForm>
-					</form>
-				</FormContainer>
-				<ImageContainer>
-					<Image src="/src/assets/wealth_health_location.jpg" />
-				</ImageContainer>
-			</BlocPage>
+						<ButtonContainer>
+							<Button
+								type="reset"
+								role="cancel"
+								textColor="#6e8615"
+								background="#ffffff"
+							/>
+							<Button
+								type="submit"
+								role="register"
+								textColor="#ffffff"
+								background="#6e8615"
+							/>
+						</ButtonContainer>
+					</BottomForm>
+				</form>
+			</FormContainer>
+			<ImageContainer>
+				<Image src="/src/assets/wealth_health_location.jpg" />
+			</ImageContainer>
 		</>
 	)
 }

@@ -1,7 +1,6 @@
-import { FocusEvent, useEffect, useState } from "react"
+import { FocusEvent, useState } from "react"
 import styled from "styled-components"
-import ErrorMessage from "../utils/ErrorMessage"
-import ValidInput from "../utils/ValidInput"
+
 
 interface IInput {
 	isValid: boolean | null

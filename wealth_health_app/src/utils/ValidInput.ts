@@ -49,11 +49,11 @@ class ValidInput {
 	}
 
 	private isStateValid(value: string) {
-		//need to be implement later
+		// TODO: need to be implement later
 	}
 
 	private isDepartmentValid(value: string) {
-		//need to be implement later
+		// TODO: need to be implement later
 	}
 }
 
