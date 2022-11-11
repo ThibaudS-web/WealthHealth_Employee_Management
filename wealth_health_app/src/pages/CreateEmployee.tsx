@@ -4,9 +4,10 @@ import InputCustom from "../components/input/InputCustom"
 import DropDownSelect from "../components/select/Select"
 import SelectData from "../models/SelectState"
 import StateMapper from "../UI/mappers/StateMapper"
-import { department } from "../utils/department"
+import { department } from "../mocks/department"
 import useForm from "../utils/hooks"
-import { states } from "../utils/states"
+import { states } from "../mocks/states"
+import { useRef, useState } from "react"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -90,13 +91,6 @@ const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 `
-const BottomForm = styled.div`
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	@media screen and (min-width: 1600px) {
-	}
-`
 
 function CreateEmployee(props: { title: string }) {
 	document.title = props.title
@@ -106,9 +100,12 @@ function CreateEmployee(props: { title: string }) {
 		validSuccessForm,
 		handleChange,
 		values,
+		setValues,
+		initialState,
 		isValid,
 		getError,
 		getErrorSelect,
+		setValidSuccessForm,
 		isValidateForm,
 		handleChangeSelect,
 		isValidSelect
@@ -123,14 +120,27 @@ function CreateEmployee(props: { title: string }) {
 			console.log("form invalid!", values)
 		}
 	}
+	const [isReset, setIsReset] = useState<boolean>(false)
+
+	const handleSelectReset = () => {
+		setIsReset(false)
+	}
+
+	const handleReset = () => {
+		setIsReset(true)
+		setValues(initialState)
+		setValidSuccessForm(initialState)
+	}
 
 	const statesData = states.map((state) => new StateMapper().mapState(state))
 	const departmentsData = department.map((department) => new SelectData(department, department))
 
+	console.log(values)
+
 	return (
 		<>
 			<FormContainer>
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} onReset={handleReset}>
 					<Infos>Informations</Infos>
 					<InfosInputContainer>
 						<Label htmlFor="firstName">First name</Label>
@@ -183,8 +193,10 @@ function CreateEmployee(props: { title: string }) {
 						<InputContainerInField>
 							<Label htmlFor="state">State</Label>
 							<DropDownSelect
+								isReset={isReset}
 								id="state"
 								name="state"
+								setReset={handleSelectReset}
 								error={getErrorSelect}
 								setValueOnChange={handleChangeSelect}
 								options={statesData}
@@ -232,8 +244,10 @@ function CreateEmployee(props: { title: string }) {
 					<InfosInputContainer>
 						<Label htmlFor="department">Department</Label>
 						<DropDownSelect
+							isReset={isReset}
 							id="department"
 							name="department"
+							setReset={handleSelectReset}
 							error={getErrorSelect}
 							setValueOnBlur={isValidSelect}
 							setValueOnChange={handleChangeSelect}

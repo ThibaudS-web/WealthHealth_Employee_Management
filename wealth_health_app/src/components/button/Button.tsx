@@ -4,11 +4,13 @@ function Button(props: {
 	background: string
 	textColor: string
 	role: string
-	type?: "button" | "submit" | "reset"
+	type: "button" | "submit" | "reset"
+	onClick?: any
 }) {
-	const { textColor, background, role, type } = props
+	const { textColor, background, role, type, onClick } = props
+	// console.log(onClick)
 	return (
-		<Btn type={type} background={background} textColor={textColor}>
+		<Btn onClick={onClick} type={type} background={background} textColor={textColor}>
 			{role === "cancel" ? "cancel" : "register"}
 		</Btn>
 	)

@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { SingleValue } from "react-select"
+import Employee from "../models/Employee"
 import ErrorMessage from "./ErrorMessage"
 import ValidInput from "./ValidInput"
 
 function useForm() {
 	const inputValidation = new ValidInput()
 	const error = new ErrorMessage()
-
-	const [values, setValues] = useState({
+	const initialState = {
 		firstName: null,
 		lastName: null,
 		birthday: null,
@@ -17,18 +17,14 @@ function useForm() {
 		street: null,
 		zipCode: null,
 		department: null
+	}
+
+	const [values, setValues] = useState({
+		...initialState
 	})
 
 	const [validSuccessForm, setValidSuccessForm] = useState({
-		firstName: null,
-		lastName: null,
-		birthday: null,
-		startDate: null,
-		state: null,
-		city: null,
-		street: null,
-		zipCode: null,
-		department: null
+		...initialState
 	})
 
 	const handleChange = (e: { target: { name: string; value: string } }) => {
@@ -86,6 +82,9 @@ function useForm() {
 		validSuccessForm,
 		handleChange,
 		values,
+		initialState,
+		setValues,
+		setValidSuccessForm,
 		isValid,
 		getError,
 		getErrorSelect,

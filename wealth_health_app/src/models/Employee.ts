@@ -1,9 +1,9 @@
 class Employee {
 	firstName: string
 	lastName: string
-	startDate: Date
+	startDate: string
 	department: string
-	birthdate: Date
+	birthday: string
 	street: string
 	city: string
 	state: string
@@ -11,9 +11,9 @@ class Employee {
 	constructor(
 		firstName: string,
 		lastName: string,
-		startDate: Date,
+		startDate: string,
 		department: string,
-		birthdate: Date,
+		birthday: string,
 		street: string,
 		city: string,
 		state: string,
@@ -23,7 +23,7 @@ class Employee {
 		this.lastName = lastName
 		this.startDate = startDate
 		this.department = department
-		this.birthdate = birthdate
+		this.birthday = birthday
 		this.street = street
 		this.city = city
 		this.state = state

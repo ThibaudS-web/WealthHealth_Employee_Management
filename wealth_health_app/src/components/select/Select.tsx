@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Select from "react-select"
 import { customStyle, Error } from "./selectStyle"
 
@@ -7,20 +7,34 @@ function DropDownSelect(props: {
 	name: string
 	id: string
 	error: Function
+	isReset: boolean
+	setReset: Function
 	setValueOnChange: Function
 	setValueOnBlur: Function
 }) {
-	const { options, setValueOnChange, name, setValueOnBlur, id, error } = props
+	const { options, setValueOnChange, name, setValueOnBlur, id, error, isReset, setReset } = props
 
 	const selectRef = useRef<any>()
+
 	const [isValid, setIsValid] = useState<null | boolean>(null)
 	const [errorMessage, setErrorMessage] = useState<null | string>(null)
+
+	const clearInput = (reset: boolean) => {
+		if (reset) {
+			selectRef.current.clearValue()
+			setReset()
+		}
+	}
 
 	const onBlur = () => {
 		const currentValue: string | null = selectRef.current?.getValue()[0]?.label ?? null
 		setIsValid(setValueOnBlur(currentValue, id))
 		setErrorMessage(error(currentValue, id))
 	}
+
+	useEffect(() => {
+		clearInput(isReset)
+	})
 
 	return (
 		<>
