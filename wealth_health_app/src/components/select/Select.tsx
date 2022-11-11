@@ -22,7 +22,7 @@ function DropDownSelect(props: {
 	const clearInput = (reset: boolean) => {
 		if (reset) {
 			selectRef.current.clearValue()
-			setReset()
+			setReset(false)
 		}
 	}
 

@@ -122,8 +122,8 @@ function CreateEmployee(props: { title: string }) {
 	}
 	const [isReset, setIsReset] = useState<boolean>(false)
 
-	const handleSelectReset = () => {
-		setIsReset(false)
+	const handleSelectReset = (isReset: boolean) => {
+		setIsReset(isReset)
 	}
 
 	const handleReset = () => {
