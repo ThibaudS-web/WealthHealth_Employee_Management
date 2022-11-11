@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { SingleValue } from "react-select"
 import ErrorMessage from "./ErrorMessage"
 import ValidInput from "./ValidInput"
 
@@ -11,9 +12,11 @@ function useForm() {
 		lastName: null,
 		birthday: null,
 		startDate: null,
+		state: null,
 		city: null,
 		street: null,
-		zipCode: null
+		zipCode: null,
+		department: null
 	})
 
 	const [validSuccessForm, setValidSuccessForm] = useState({
@@ -21,9 +24,11 @@ function useForm() {
 		lastName: null,
 		birthday: null,
 		startDate: null,
+		state: null,
 		city: null,
 		street: null,
-		zipCode: null
+		zipCode: null,
+		department: null
 	})
 
 	const handleChange = (e: { target: { name: string; value: string } }) => {
@@ -32,7 +37,16 @@ function useForm() {
 			...values,
 			[name]: value
 		})
-		console.log(values)
+	}
+
+	const handleChangeSelect = (e: SingleValue<{ value: string; label: string }>, name: string) => {
+		if (e) {
+			const { value } = e
+			setValues({
+				...values,
+				[name]: value
+			})
+		}
 	}
 
 	const isValid = (e: { target: { name: string; value: string } }, id: string) => {
@@ -45,7 +59,17 @@ function useForm() {
 		return isValid
 	}
 
-	const getIsValidateForm = () => {
+	const isValidSelect = (value: string, id: string) => {
+		const isValid = inputValidation.isValidInput(value, id)
+		setValidSuccessForm({
+			...validSuccessForm,
+			[id]: isValid
+		})
+
+		return isValid
+	}
+
+	const isValidateForm = () => {
 		return Object.values(validSuccessForm).every((el) => el)
 	}
 
@@ -54,7 +78,21 @@ function useForm() {
 		return error.getErrorMessage(value, id)
 	}
 
-	return { handleChange, values, isValid, getError, getIsValidateForm }
+	const getErrorSelect = (value: string, id: string): string => {
+		return error.getErrorMessage(value, id)
+	}
+
+	return {
+		validSuccessForm,
+		handleChange,
+		values,
+		isValid,
+		getError,
+		getErrorSelect,
+		isValidateForm,
+		handleChangeSelect,
+		isValidSelect
+	}
 }
 
 export default useForm

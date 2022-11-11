@@ -15,8 +15,12 @@ class ValidInput {
 				return this.isStreetValid(value)
 			case "zipCode":
 				return this.isZipCodeValid(value)
+			case "state":
+				return this.isSelectValid(value)
+			case "department":
+				return this.isSelectValid(value)
 			default:
-				throw new Error('unknown input')
+				throw new Error("unknown input")
 		}
 	}
 
@@ -38,7 +42,7 @@ class ValidInput {
 
 	private isCityValid(value: string): boolean {
 		//Only UPPERCASE
-		const cityRegExp = new RegExp("[A-Z-'\u00C0-\u017F ]{3,20}$", "g")
+		const cityRegExp = new RegExp("[A-Z-'\u00C0-\u017F ]{3,80}$", "g")
 		return cityRegExp.test(value)
 	}
 
@@ -48,12 +52,9 @@ class ValidInput {
 		return zipCodeRegExp.test(value)
 	}
 
-	private isStateValid(value: string) {
+	private isSelectValid(value: string | null) {
 		// TODO: need to be implement later
-	}
-
-	private isDepartmentValid(value: string) {
-		// TODO: need to be implement later
+		return value !== null
 	}
 }
 

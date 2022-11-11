@@ -10,8 +10,12 @@ class ErrorMessage {
 		return this.errorName
 	}
 
-	private getErrorDate(value: string) {
-		if (value.length === 0) return this.emptyInput
+	private getErrorDate() {
+		return this.emptyInput
+	}
+
+	private getErrorSelect() {
+		return this.emptyInput
 	}
 
 	private getErrorStreet(value: string) {
@@ -36,15 +40,19 @@ class ErrorMessage {
 			case "lastName":
 				return this.getErrorName(value)
 			case "birthday":
-				return this.getErrorDate(value)
+				return this.getErrorDate()
 			case "startDate":
-				return this.getErrorDate(value)
+				return this.getErrorDate()
 			case "city":
 				return this.getErrorCity(value)
 			case "street":
 				return this.getErrorStreet(value)
 			case "zipCode":
 				return this.getErrorZipCode(value)
+			case "state":
+				return this.getErrorSelect()
+			case "department":
+				return this.getErrorSelect()
 			default:
 				return "unknown input"
 		}

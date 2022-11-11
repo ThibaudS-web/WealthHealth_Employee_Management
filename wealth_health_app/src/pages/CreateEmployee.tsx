@@ -1,7 +1,12 @@
 import styled from "styled-components"
-import Button from "../components/Button"
-import InputCustom from "../components/InputCustom"
+import Button from "../components/button/Button"
+import InputCustom from "../components/input/InputCustom"
+import DropDownSelect from "../components/select/Select"
+import SelectData from "../models/SelectState"
+import StateMapper from "../UI/mappers/StateMapper"
+import { department } from "../utils/department"
 import useForm from "../utils/hooks"
+import { states } from "../utils/states"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -45,24 +50,10 @@ const Label = styled.label`
 		font-size: 16px;
 	}
 `
-const Input = styled.input`
-	height: 30px;
-	border-radius: 15px;
-	border: none;
-	padding: 10px;
-	font-size: 16px;
-	font-weight: 600;
-	color: #6e8614;
-	width: 65%;
-	min-width: 150px;
-	@media screen and (max-width: 760px) {
-		font-size: 14px;
-	}
-`
 const GlobalInputContainerStyle = {
 	display: "flex",
 	alignItems: "center",
-	marginBottom: "20px",
+	marginBottom: "30px",
 	justifyContent: "space-between",
 	minWidth: "215px"
 }
@@ -111,17 +102,30 @@ function CreateEmployee(props: { title: string }) {
 	document.title = props.title
 
 	//Custom Hook for handle form features
-	const { handleChange, values, isValid, getError, getIsValidateForm } = useForm()
+	const {
+		validSuccessForm,
+		handleChange,
+		values,
+		isValid,
+		getError,
+		getErrorSelect,
+		isValidateForm,
+		handleChangeSelect,
+		isValidSelect
+	} = useForm()
 
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault()
-
-		if (getIsValidateForm()) {
+		console.log("validSuccessForm :", validSuccessForm)
+		if (isValidateForm()) {
 			console.log("form sent!", values)
 		} else {
 			console.log("form invalid!", values)
 		}
 	}
+
+	const statesData = states.map((state) => new StateMapper().mapState(state))
+	const departmentsData = department.map((department) => new SelectData(department, department))
 
 	return (
 		<>
@@ -135,7 +139,6 @@ function CreateEmployee(props: { title: string }) {
 							type="text"
 							id="firstName"
 							name="firstName"
-							zipcodeInput={false}
 							error={getError}
 							setValueOnChange={handleChange}
 							setValueOnBlur={isValid}
@@ -148,7 +151,6 @@ function CreateEmployee(props: { title: string }) {
 							type="text"
 							id="lastName"
 							name="lastName"
-							zipcodeInput={false}
 							error={getError}
 							setValueOnBlur={isValid}
 							setValueOnChange={handleChange}
@@ -160,7 +162,6 @@ function CreateEmployee(props: { title: string }) {
 							type="date"
 							id="birthday"
 							name="birthday"
-							zipcodeInput={false}
 							error={getError}
 							setValueOnBlur={isValid}
 							setValueOnChange={handleChange}
@@ -172,7 +173,6 @@ function CreateEmployee(props: { title: string }) {
 							type="date"
 							id="startDate"
 							name="startDate"
-							zipcodeInput={false}
 							error={getError}
 							setValueOnBlur={isValid}
 							setValueOnChange={handleChange}
@@ -182,7 +182,14 @@ function CreateEmployee(props: { title: string }) {
 						<Legend>Address</Legend>
 						<InputContainerInField>
 							<Label htmlFor="state">State</Label>
-							<Input type="text" id="state" name="state" />
+							<DropDownSelect
+								id="state"
+								name="state"
+								error={getErrorSelect}
+								setValueOnChange={handleChangeSelect}
+								options={statesData}
+								setValueOnBlur={isValidSelect}
+							/>
 						</InputContainerInField>
 						<InputContainerInField>
 							<Label htmlFor="city">City</Label>
@@ -191,7 +198,6 @@ function CreateEmployee(props: { title: string }) {
 								type="text"
 								id="city"
 								name="city"
-								zipcodeInput={false}
 								error={getError}
 								setValueOnBlur={isValid}
 								setValueOnChange={handleChange}
@@ -204,7 +210,6 @@ function CreateEmployee(props: { title: string }) {
 								type="text"
 								id="street"
 								name="street"
-								zipcodeInput={false}
 								error={getError}
 								setValueOnBlur={isValid}
 								setValueOnChange={handleChange}
@@ -224,26 +229,31 @@ function CreateEmployee(props: { title: string }) {
 							/>
 						</InputContainerInField>
 					</FieldSet>
-					<BottomForm>
-						<InfosInputContainer>
-							<Label htmlFor="department">Department</Label>
-							<Input type="text" id="department" name="department" />
-						</InfosInputContainer>
-						<ButtonContainer>
-							<Button
-								type="reset"
-								role="cancel"
-								textColor="#6e8615"
-								background="#ffffff"
-							/>
-							<Button
-								type="submit"
-								role="register"
-								textColor="#ffffff"
-								background="#6e8615"
-							/>
-						</ButtonContainer>
-					</BottomForm>
+					<InfosInputContainer>
+						<Label htmlFor="department">Department</Label>
+						<DropDownSelect
+							id="department"
+							name="department"
+							error={getErrorSelect}
+							setValueOnBlur={isValidSelect}
+							setValueOnChange={handleChangeSelect}
+							options={departmentsData}
+						/>
+					</InfosInputContainer>
+					<ButtonContainer>
+						<Button
+							type="reset"
+							role="cancel"
+							textColor="#6e8615"
+							background="#ffffff"
+						/>
+						<Button
+							type="submit"
+							role="register"
+							textColor="#ffffff"
+							background="#6e8615"
+						/>
+					</ButtonContainer>
 				</form>
 			</FormContainer>
 			<ImageContainer>
