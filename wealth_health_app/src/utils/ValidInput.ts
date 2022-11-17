@@ -36,7 +36,7 @@ class ValidInput {
 
 	private isStreetValid(value: string): boolean {
 		//Starts with a number
-		const streetRegExp = new RegExp("^[0-9][0-9]{0,2}[a-zA-Z-'\u00C0-\u017F ]{2,30}$", "g")
+		const streetRegExp = new RegExp("^[0-9][0-9]{0,3}[a-zA-Z-'\u00C0-\u017F ]{2,30}$", "g")
 		return streetRegExp.test(value)
 	}
 
@@ -53,7 +53,6 @@ class ValidInput {
 	}
 
 	private isSelectValid(value: string | null) {
-		// TODO: need to be implement later
 		return value !== null
 	}
 }

@@ -10,9 +10,19 @@ function InputCustom(props: {
 	setValueOnChange: Function
 	setValueOnBlur: Function
 	error: Function
+	value?: string | null
 }) {
-	const { type, id, name, zipcodeInput, placeholder, setValueOnBlur, setValueOnChange, error } =
-		props
+	const {
+		type,
+		id,
+		name,
+		zipcodeInput,
+		placeholder,
+		setValueOnBlur,
+		setValueOnChange,
+		error,
+		value
+	} = props
 
 	const [errorMessage, setErrorMessage] = useState<null | string>(null)
 	const [isValid, setIsValid] = useState<null | boolean>(null)
@@ -26,6 +36,7 @@ function InputCustom(props: {
 		<>
 			{zipcodeInput ? (
 				<Input
+					value={value ?? ""}
 					isValid={isValid}
 					placeholder={placeholder}
 					maxLength={5}
@@ -42,6 +53,7 @@ function InputCustom(props: {
 				/>
 			) : (
 				<Input
+					value={value ?? ""}
 					isValid={isValid}
 					placeholder={placeholder}
 					onChange={(e) => {

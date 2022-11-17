@@ -1,13 +1,16 @@
 import styled from "styled-components"
 
 export const customStyle = (isValid: boolean | null) => {
-	const container = (styles: any) => ({
-		...styles,
-		width: "65%",
-		minWidth: "150px",
-		fontSize: "16px",
-		whiteSpace: "nowrap"
-	})
+	const container = (styles: any) => (
+		console.log(styles),
+		{
+			...styles,
+			width: "65%",
+			minWidth: "150px",
+			fontSize: "16px",
+			whiteSpace: "nowrap"
+		}
+	)
 	const placeholder = (styles: any) => ({
 		...styles,
 		opacity: "0.4",

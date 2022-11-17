@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { NavLink as Link, NavLink } from "react-router-dom"
 import styled from "styled-components"
 // import Logo from "../SVG/Logo"
 
@@ -33,7 +33,7 @@ const HeaderTitle = styled.h1`
 	}
 `
 
-const LiContainer = styled.ul`
+const Navigation = styled.ul`
 	list-style: none;
 	display: flex;
 	width: 320px;
@@ -50,38 +50,39 @@ const Li = styled.li`
 		width: 50%;
 	}
 `
-const StyledLink = styled(Link)`
-	text-decoration: none;
-	width: 100%;
-	height: 100%;
-	font-weight: 600;
-	padding: 10px;
-	display: block;
-	color: #ffffff;
-	background-color: #6e8615;
-	:hover {
-		background-color: #ffffff;
-		color: #6e8615;
-	}
-`
+
+const linkStyle = (props: { isActive: boolean }) => ({
+	width: "100%",
+	height: "100%",
+	fontWeight: 600,
+	textDecoration: "none",
+	padding: "10px",
+	display: "block",
+	color: props.isActive ? "#6e8614" : "white",
+	backgroundColor: props.isActive ? "#ffffff" : "#6e8614",
+	border: props.isActive ? "1px solid #6e8614" : "none"
+})
 
 function Header() {
-	return (	
+	return (
 		<Container>
 			<ChildContainer>
-				{/* <Logo /> */}
 				<Logo src="/src/assets/wealthHealth_logo.jpg" />
 				<HeaderTitle>HRnet - Create employee</HeaderTitle>
 			</ChildContainer>
 			<nav>
-				<LiContainer>
+				<Navigation>
 					<Li>
-						<StyledLink to="/">Register an employee</StyledLink>
+						<NavLink style={linkStyle} to="/">
+							Register an employee
+						</NavLink>
 					</Li>
 					<Li>
-						<StyledLink to="/employees-list">All employees</StyledLink>
+						<NavLink style={linkStyle} to="/employees-list">
+							All employees
+						</NavLink>
 					</Li>
-				</LiContainer>
+				</Navigation>
 			</nav>
 		</Container>
 	)

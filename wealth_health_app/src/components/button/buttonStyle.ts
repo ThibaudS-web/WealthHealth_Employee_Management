@@ -8,8 +8,10 @@ export const Btn = styled.button<{ textColor: string; background: string }>`
 	border-radius: 15px;
 	border: none;
 	cursor: pointer;
-	${(props) => `color: ${props.textColor};`}
-	${(props) => `background-color: ${props.background};`}
+	${(props) =>
+		`color: ${props.textColor}; 
+		background-color: ${props.background};
+	`}
 	:hover {
 		transform: scale(1.1);
 	}

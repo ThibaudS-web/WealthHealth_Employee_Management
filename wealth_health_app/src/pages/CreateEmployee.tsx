@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { CSSObject } from "styled-components"
 import Button from "../components/button/Button"
 import InputCustom from "../components/input/InputCustom"
 import DropDownSelect from "../components/select/Select"
@@ -7,7 +7,8 @@ import StateMapper from "../UI/mappers/StateMapper"
 import { department } from "../mocks/department"
 import useForm from "../utils/hooks"
 import { states } from "../mocks/states"
-import { useRef, useState } from "react"
+import { useState } from "react"
+import Modal from "../components/modal/Modal"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -111,23 +112,18 @@ function CreateEmployee(props: { title: string }) {
 		isValidSelect
 	} = useForm()
 
-	const handleSubmit = (e: { preventDefault: () => void }) => {
-		e.preventDefault()
-		console.log("validSuccessForm :", validSuccessForm)
-		if (isValidateForm()) {
-			console.log("form sent!", values)
-		} else {
-			console.log("form invalid!", values)
-		}
+	const handleDisplayModal = () => {
+		setIsModalOpen(!isModalOpen)
 	}
-	const [isReset, setIsReset] = useState<boolean>(false)
 
+	const [isSelectReset, setIsSelectReset] = useState(false)
+	const [isModalOpen, setIsModalOpen] = useState(false)
 	const handleSelectReset = (isReset: boolean) => {
-		setIsReset(isReset)
+		setIsSelectReset(isReset)
 	}
 
-	const handleReset = () => {
-		setIsReset(true)
+	const handleResetForm = () => {
+		setIsSelectReset(true)
 		setValues(initialState)
 		setValidSuccessForm(initialState)
 	}
@@ -135,16 +131,43 @@ function CreateEmployee(props: { title: string }) {
 	const statesData = states.map((state) => new StateMapper().mapState(state))
 	const departmentsData = department.map((department) => new SelectData(department, department))
 
-	console.log(values)
+	const handleSubmit = (e: { preventDefault: () => void }) => {
+		e.preventDefault()
+		if (isValidateForm()) {
+			handleDisplayModal()
+			// handleResetForm()
+		} else {
+			alert(`Incomplete form!`)
+		}
+	}
+
+	const content = (styles: CSSObject, state?: any) => ({
+		...styles,
+		state
+	})
+
+	const contentCustom = {
+		color: isValidateForm() ? "blue" : "red"
+	}
+
+	console.log(
+		content(
+			{
+				color: "blue"
+			},
+			isModalOpen
+		)
+	)
 
 	return (
 		<>
 			<FormContainer>
-				<form onSubmit={handleSubmit} onReset={handleReset}>
+				<form onSubmit={handleSubmit} onReset={handleResetForm}>
 					<Infos>Informations</Infos>
 					<InfosInputContainer>
 						<Label htmlFor="firstName">First name</Label>
 						<InputCustom
+							value={values.firstName}
 							placeholder="Firstname"
 							type="text"
 							id="firstName"
@@ -157,6 +180,7 @@ function CreateEmployee(props: { title: string }) {
 					<InfosInputContainer>
 						<Label htmlFor="lastName">Last name</Label>
 						<InputCustom
+							value={values.lastName}
 							placeholder="Lastname"
 							type="text"
 							id="lastName"
@@ -169,6 +193,7 @@ function CreateEmployee(props: { title: string }) {
 					<InfosInputContainer>
 						<Label htmlFor="birthday">Birdthday</Label>
 						<InputCustom
+							value={values.birthday}
 							type="date"
 							id="birthday"
 							name="birthday"
@@ -180,6 +205,7 @@ function CreateEmployee(props: { title: string }) {
 					<InfosInputContainer>
 						<Label htmlFor="startDate">Start Date</Label>
 						<InputCustom
+							value={values.startDate}
 							type="date"
 							id="startDate"
 							name="startDate"
@@ -193,7 +219,7 @@ function CreateEmployee(props: { title: string }) {
 						<InputContainerInField>
 							<Label htmlFor="state">State</Label>
 							<DropDownSelect
-								isReset={isReset}
+								isReset={isSelectReset}
 								id="state"
 								name="state"
 								setReset={handleSelectReset}
@@ -206,6 +232,7 @@ function CreateEmployee(props: { title: string }) {
 						<InputContainerInField>
 							<Label htmlFor="city">City</Label>
 							<InputCustom
+								value={values.city}
 								placeholder="CITY"
 								type="text"
 								id="city"
@@ -218,6 +245,7 @@ function CreateEmployee(props: { title: string }) {
 						<InputContainerInField>
 							<Label htmlFor="street">Street</Label>
 							<InputCustom
+								value={values.street}
 								placeholder="5 rue des champs"
 								type="text"
 								id="street"
@@ -230,6 +258,7 @@ function CreateEmployee(props: { title: string }) {
 						<InputContainerInField>
 							<Label htmlFor="zipCode">Zip code</Label>
 							<InputCustom
+								value={values.zipCode}
 								placeholder="eg: 16100"
 								type="text"
 								id="zipCode"
@@ -244,7 +273,7 @@ function CreateEmployee(props: { title: string }) {
 					<InfosInputContainer>
 						<Label htmlFor="department">Department</Label>
 						<DropDownSelect
-							isReset={isReset}
+							isReset={isSelectReset}
 							id="department"
 							name="department"
 							setReset={handleSelectReset}
@@ -269,6 +298,29 @@ function CreateEmployee(props: { title: string }) {
 						/>
 					</ButtonContainer>
 				</form>
+				{!isModalOpen && (
+					<Modal
+						setDisplay={handleDisplayModal}
+						cross={true}
+						overlayClosure={false}
+						title="HRnet"
+						// contentStyle={}
+						// titleStyle={}
+						// closeStyle={}
+						// containerStyle={}
+						// headerStyle={}
+						// overlayStyle={}
+						// footerStyle={}
+						// containerStyle={}
+						// footer={(
+						// 	<>
+						// 		<button>Button 1</button>
+						// 	</>
+						// )}
+					>
+						New employee created!
+					</Modal>
+				)}
 			</FormContainer>
 			<ImageContainer>
 				<Image src="/src/assets/wealth_health_location.jpg" />
@@ -278,5 +330,3 @@ function CreateEmployee(props: { title: string }) {
 }
 
 export default CreateEmployee
-
-//NEED TO IMPLEMENT DROPDOWN FOR STATE AND DEPARTMENT
