@@ -189,26 +189,22 @@ function CreateEmployee(props: { title: string }) {
 					</InfosInputContainer>
 					<InfosInputContainer>
 						<Label htmlFor="birthday">Birdthday</Label>
-						<InputCustom
-							value={values.birthday}
-							type="date"
+						<DatePickerInput
 							id="birthday"
 							name="birthday"
-							error={getError}
-							setValueOnBlur={isValid}
-							setValueOnChange={handleChange}
+							setValueOnChange={handleChangeDatePicker}
+							onCloseCalendar={isValidDatePicker}
+							error={getErrorDatePicker}
 						/>
 					</InfosInputContainer>
 					<InfosInputContainer>
 						<Label htmlFor="startDate">Start Date</Label>
-						<InputCustom
-							value={values.startDate}
-							type="date"
+						<DatePickerInput
 							id="startDate"
 							name="startDate"
-							error={getError}
-							setValueOnBlur={isValid}
-							setValueOnChange={handleChange}
+							setValueOnChange={handleChangeDatePicker}
+							onCloseCalendar={isValidDatePicker}
+							error={getErrorDatePicker}
 						/>
 					</InfosInputContainer>
 					<FieldSet>
@@ -280,7 +276,7 @@ function CreateEmployee(props: { title: string }) {
 							options={departmentsData}
 						/>
 					</InfosInputContainer>
-					<InfosInputContainer>
+					{/* <InfosInputContainer>
 						<DatePickerInput
 							id="startDate"
 							name="startDate"
@@ -288,7 +284,7 @@ function CreateEmployee(props: { title: string }) {
 							onCloseCalendar={isValidDatePicker}
 							error={getErrorDatePicker}
 						/>
-					</InfosInputContainer>
+					</InfosInputContainer> */}
 					<ButtonContainer>
 						<BtnForm
 							type="reset"
