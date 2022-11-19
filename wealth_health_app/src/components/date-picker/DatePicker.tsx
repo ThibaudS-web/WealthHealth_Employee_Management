@@ -2,7 +2,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import DatePicker from "react-datepicker"
 import { useEffect, useState } from "react"
 import { Error } from "./datePickerStyle"
-import { setBorderStyle } from "./setOnError"
+import ErrorStyleInput from "./setOnError"
 
 function DatePickerInput(props: {
 	id: string
@@ -13,14 +13,14 @@ function DatePickerInput(props: {
 }) {
 	const { id, name, setValueOnChange, onCloseCalendar, error } = props
 
-	const ROOT = document.getElementById("root")
+	const errorStyle = new ErrorStyleInput()
 
 	const [startDate, setStartDate] = useState<null | Date>(null)
 	const [errorMessage, setErrorMessage] = useState<null | string>(null)
 	const [isValid, setIsValid] = useState<null | boolean>(null)
 
 	useEffect(() => {
-		setBorderStyle(ROOT, name, isValid)
+		errorStyle.getStyleError(name, isValid)
 	})
 
 	const handleOnCloseCalendar = (date: Date | null, id: string) => {
