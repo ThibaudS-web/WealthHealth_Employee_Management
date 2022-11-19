@@ -1,3 +1,8 @@
+:root {
+	--border-input-birthday: none;
+	--border-input-startday: none;
+}
+
 .react-datepicker-wrapper {
 	width: 65% !important;
 	min-width: 150px !important;
@@ -7,15 +12,21 @@
 	height: 30px !important;
 	border-radius: 15px !important;
 	padding: 10px !important;
-	border: none !important;
 	font-size: 16px !important;
 	font-weight: 600 !important;
+	/* border: none !important; */
 	color: #6e8614 !important;
 	width: 100% !important;
 	min-width: 150px !important;
 }
-
 ::placeholder {
 	opacity: 0.4;
 }
 
+input[name="birthday"] {
+	border: var(--border-input-birthday) !important;
+}
+
+input[name="startDate"] {
+	border: var(--border-input-startday) !important;
+}
