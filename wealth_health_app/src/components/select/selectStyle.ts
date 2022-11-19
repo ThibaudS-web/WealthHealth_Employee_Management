@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 export const customStyle = (isValid: boolean | null) => {
 	const container = (styles: any) => (
-		console.log(styles),
 		{
 			...styles,
 			width: "65%",

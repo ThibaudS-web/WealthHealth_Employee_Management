@@ -1,24 +1,24 @@
 class ValidInput {
-	public isValidInput(value: string, id: string) {
+	public isValidInput(value: string | Date, id: string) {
 		switch (id) {
 			case "firstName":
-				return this.isNameValid(value)
+				return this.isNameValid(value as string)
 			case "lastName":
-				return this.isNameValid(value)
+				return this.isNameValid(value as string)
 			case "birthday":
-				return this.isDateValid(value)
+				return this.isDateValid(value as Date)
 			case "startDate":
-				return this.isDateValid(value)
+				return this.isDateValid(value as Date)
 			case "city":
-				return this.isCityValid(value)
+				return this.isCityValid(value as string)
 			case "street":
-				return this.isStreetValid(value)
+				return this.isStreetValid(value as string)
 			case "zipCode":
-				return this.isZipCodeValid(value)
+				return this.isZipCodeValid(value as string)
 			case "state":
-				return this.isSelectValid(value)
+				return this.isSelectValid(value as string)
 			case "department":
-				return this.isSelectValid(value)
+				return this.isSelectValid(value as string)
 			default:
 				throw new Error("unknown input")
 		}
@@ -30,8 +30,8 @@ class ValidInput {
 		return nameRegExp.test(value)
 	}
 
-	private isDateValid(value: string): boolean {
-		return value.length > 0
+	private isDateValid(value: Date | null): boolean {
+		return value !== null
 	}
 
 	private isStreetValid(value: string): boolean {

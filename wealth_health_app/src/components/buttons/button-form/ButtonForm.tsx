@@ -1,4 +1,4 @@
-import { Btn } from "./buttonStyle"
+import { BtnForm } from "./buttonFormStyle"
 
 function Button(props: {
 	background: string
@@ -10,9 +10,9 @@ function Button(props: {
 	const { textColor, background, role, type, onClick } = props
 	// console.log(onClick)
 	return (
-		<Btn onClick={onClick} type={type} background={background} textColor={textColor}>
+		<BtnForm onClick={onClick} type={type} background={background} textColor={textColor}>
 			{role === "cancel" ? "cancel" : "register"}
-		</Btn>
+		</BtnForm>
 	)
 }
 

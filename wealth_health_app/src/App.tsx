@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom"
 
-import Layout from "./components/Layout/Layout"
+import Layout from "./components/Layout/layout/Layout"
 
 import Error from "./pages/Error"
 import CreateEmployee from "./pages/CreateEmployee"

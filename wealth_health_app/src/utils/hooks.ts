@@ -6,7 +6,7 @@ import ValidInput from "./ValidInput"
 function useForm() {
 	const inputValidation = new ValidInput()
 	const error = new ErrorMessage()
-	
+
 	const initialState = {
 		firstName: null,
 		lastName: null,
@@ -28,10 +28,26 @@ function useForm() {
 	})
 
 	const handleChange = (e: { target: { name: string; value: string } }) => {
+		console.log(e)
 		const { name, value } = e.target
 		setValues({
 			...values,
 			[name]: value
+		})
+	}
+
+	const handleChangeDatePicker = (date: Date, name: string) => {
+		const formattedDate = date?.toLocaleDateString("en-US").replaceAll("/", "-").split("-")
+
+		const year = formattedDate.at(2)
+		const month = formattedDate.at(0)
+		const day = formattedDate.at(1)
+
+		const requiredFormatDate = [year, month, day].join("-")
+
+		setValues({
+			...values,
+			[name]: requiredFormatDate
 		})
 	}
 
@@ -55,6 +71,16 @@ function useForm() {
 		return isValid
 	}
 
+	const isValidDatePicker = (value: Date, id: string) => {
+		const isValid = inputValidation.isValidInput(value, id)
+		setValidSuccessForm({
+			...validSuccessForm,
+			[id]: isValid
+		})
+
+		return isValid
+	}
+
 	const isValidSelect = (value: string, id: string) => {
 		const isValid = inputValidation.isValidInput(value, id)
 		setValidSuccessForm({
@@ -74,6 +100,10 @@ function useForm() {
 		return error.getErrorMessage(value, id)
 	}
 
+	const getErrorDatePicker = (value: Date, id: string) => {
+		return error.getErrorMessage(value, id)
+	}
+
 	const getErrorSelect = (value: string, id: string): string => {
 		return error.getErrorMessage(value, id)
 	}
@@ -84,12 +114,15 @@ function useForm() {
 		values,
 		initialState,
 		setValues,
+		getErrorDatePicker,
 		setValidSuccessForm,
 		isValid,
+		isValidDatePicker,
 		getError,
 		getErrorSelect,
 		isValidateForm,
 		handleChangeSelect,
+		handleChangeDatePicker,
 		isValidSelect
 	}
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const Btn = styled.button<{ textColor: string; background: string }>`
+export const BtnForm = styled.button<{ textColor: string; background: string }>`
 	width: 100px;
 	height: 30px;
 	font-size: 16px;
@@ -16,3 +16,4 @@ export const Btn = styled.button<{ textColor: string; background: string }>`
 		transform: scale(1.1);
 	}
 `
+

@@ -1,5 +1,5 @@
-import styled, { CSSObject } from "styled-components"
-import Button from "../components/button/Button"
+import styled from "styled-components"
+import BtnForm from "../components/buttons/button-form/ButtonForm"
 import InputCustom from "../components/input/InputCustom"
 import DropDownSelect from "../components/select/Select"
 import SelectData from "../models/SelectState"
@@ -9,6 +9,9 @@ import useForm from "../utils/hooks"
 import { states } from "../mocks/states"
 import { useState } from "react"
 import Modal from "../components/modal/Modal"
+import ButtonModal from "../components/buttons/button-modal/ButtonModal"
+import { useNavigate } from "react-router-dom"
+import DatePickerInput from "../components/date-picker/DatePicker"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -18,7 +21,6 @@ const FormContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
-
 	@media screen and (max-width: 800px) {
 		width: 100%;
 	}
@@ -95,6 +97,9 @@ const ButtonContainer = styled.div`
 
 function CreateEmployee(props: { title: string }) {
 	document.title = props.title
+	const [startDate, setStartDate] = useState<Date | null>(null)
+
+	const navigate = useNavigate()
 
 	//Custom Hook for handle form features
 	const {
@@ -106,26 +111,36 @@ function CreateEmployee(props: { title: string }) {
 		isValid,
 		getError,
 		getErrorSelect,
+		getErrorDatePicker,
 		setValidSuccessForm,
 		isValidateForm,
 		handleChangeSelect,
-		isValidSelect
+		isValidSelect,
+		isValidDatePicker,
+		handleChangeDatePicker
 	} = useForm()
+
+	console.log("values: ", values)
+	console.log("validSuccessForm: ", validSuccessForm)
+	const [isSelectReset, setIsSelectReset] = useState(false)
+	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	const handleDisplayModal = () => {
 		setIsModalOpen(!isModalOpen)
 	}
 
-	const [isSelectReset, setIsSelectReset] = useState(false)
-	const [isModalOpen, setIsModalOpen] = useState(false)
 	const handleSelectReset = (isReset: boolean) => {
 		setIsSelectReset(isReset)
 	}
 
-	const handleResetForm = () => {
+	const handleFormReset = () => {
 		setIsSelectReset(true)
 		setValues(initialState)
 		setValidSuccessForm(initialState)
+	}
+
+	const handleRedirection = () => {
+		navigate("/employees-list")
 	}
 
 	const statesData = states.map((state) => new StateMapper().mapState(state))
@@ -135,34 +150,16 @@ function CreateEmployee(props: { title: string }) {
 		e.preventDefault()
 		if (isValidateForm()) {
 			handleDisplayModal()
-			// handleResetForm()
+			handleFormReset()
 		} else {
 			alert(`Incomplete form!`)
 		}
 	}
 
-	const content = (styles: CSSObject, state?: any) => ({
-		...styles,
-		state
-	})
-
-	const contentCustom = {
-		color: isValidateForm() ? "blue" : "red"
-	}
-
-	console.log(
-		content(
-			{
-				color: "blue"
-			},
-			isModalOpen
-		)
-	)
-
 	return (
 		<>
 			<FormContainer>
-				<form onSubmit={handleSubmit} onReset={handleResetForm}>
+				<form onSubmit={handleSubmit} onReset={handleFormReset}>
 					<Infos>Informations</Infos>
 					<InfosInputContainer>
 						<Label htmlFor="firstName">First name</Label>
@@ -283,14 +280,23 @@ function CreateEmployee(props: { title: string }) {
 							options={departmentsData}
 						/>
 					</InfosInputContainer>
+					<InfosInputContainer>
+						<DatePickerInput
+							id="startDate"
+							name="startDate"
+							setValueOnChange={handleChangeDatePicker}
+							onCloseCalendar={isValidDatePicker}
+							error={getErrorDatePicker}
+						/>
+					</InfosInputContainer>
 					<ButtonContainer>
-						<Button
+						<BtnForm
 							type="reset"
 							role="cancel"
 							textColor="#6e8615"
 							background="#ffffff"
 						/>
-						<Button
+						<BtnForm
 							type="submit"
 							role="register"
 							textColor="#ffffff"
@@ -298,27 +304,32 @@ function CreateEmployee(props: { title: string }) {
 						/>
 					</ButtonContainer>
 				</form>
-				{!isModalOpen && (
+				{isModalOpen && (
 					<Modal
-						setDisplay={handleDisplayModal}
+						showModal={isModalOpen}
 						cross={true}
-						overlayClosure={false}
+						overlayClosure={true}
 						title="HRnet"
-						// contentStyle={}
-						// titleStyle={}
-						// closeStyle={}
-						// containerStyle={}
-						// headerStyle={}
-						// overlayStyle={}
-						// footerStyle={}
-						// containerStyle={}
-						// footer={(
-						// 	<>
-						// 		<button>Button 1</button>
-						// 	</>
-						// )}
+						footer={
+							<>
+								<ButtonModal
+									setDisplay={handleDisplayModal}
+									bgColorHover="#d4dea3"
+									borderColor="#6e8614"
+								>
+									Ok
+								</ButtonModal>
+								<ButtonModal
+									redirection={handleRedirection}
+									bgColorHover="#4189d0"
+									borderColor="#0e3860"
+								>
+									Go to employees list -&gt;
+								</ButtonModal>
+							</>
+						}
 					>
-						New employee created!
+						New employee created! {values.firstName}
 					</Modal>
 				)}
 			</FormContainer>

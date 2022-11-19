@@ -33,22 +33,22 @@ class ErrorMessage {
 		return this.errorZipCode
 	}
 
-	public getErrorMessage(value: string, id: string) {
+	public getErrorMessage(value: string | Date, id: string) {
 		switch (id) {
 			case "firstName":
-				return this.getErrorName(value)
+				return this.getErrorName(value as string)
 			case "lastName":
-				return this.getErrorName(value)
+				return this.getErrorName(value as string)
 			case "birthday":
 				return this.getErrorDate()
 			case "startDate":
 				return this.getErrorDate()
 			case "city":
-				return this.getErrorCity(value)
+				return this.getErrorCity(value as string)
 			case "street":
-				return this.getErrorStreet(value)
+				return this.getErrorStreet(value as string)
 			case "zipCode":
-				return this.getErrorZipCode(value)
+				return this.getErrorZipCode(value as string)
 			case "state":
 				return this.getErrorSelect()
 			case "department":
