@@ -13,7 +13,11 @@ import { Modal } from "@thibaud_s-dev/react-modal-custom"
 import ButtonModal from "../components/buttons/button-modal/ButtonModal"
 import { useNavigate } from "react-router-dom"
 import DatePickerInput from "../components/date-picker/DatePicker"
-import { footerStyle } from "../components/modal/customStyleModal"
+import {
+	contentErrorStyle,
+	contentValidStyle,
+	footerStyle
+} from "../components/modal/customStyleModal"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -125,9 +129,11 @@ function CreateEmployee(props: { title: string }) {
 	const [isDateReset, setIsDateReset] = useState(false)
 
 	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [onErrorModal, setOnErrorModal] = useState(false)
 
-	const handleDisplayModal = () => {
+	const handleDisplayModal = (error: boolean) => {
 		setIsModalOpen(!isModalOpen)
+		setOnErrorModal(error)
 	}
 
 	const handleSelectReset = (isReset: boolean) => {
@@ -155,10 +161,10 @@ function CreateEmployee(props: { title: string }) {
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault()
 		if (isValidateForm()) {
-			handleDisplayModal()
+			handleDisplayModal(false)
 			handleFormReset()
 		} else {
-			alert(`Incomplete form!`)
+			handleDisplayModal(true)
 		}
 	}
 
@@ -308,27 +314,30 @@ function CreateEmployee(props: { title: string }) {
 						cross={true}
 						overlayClosure={true}
 						title="HRnet"
+						contentStyle={onErrorModal ? contentErrorStyle : contentValidStyle}
 						footerStyle={footerStyle}
 						footerContent={
 							<>
 								<ButtonModal
-									setDisplay={handleDisplayModal}
+									setDisplay={() => handleDisplayModal(onErrorModal)}
 									bgColorHover="#d4dea3"
 									borderColor="#6e8614"
 								>
 									Ok
 								</ButtonModal>
-								<ButtonModal
-									redirection={handleRedirection}
-									bgColorHover="#4189d0"
-									borderColor="#0e3860"
-								>
-									Go to employees list -&gt;
-								</ButtonModal>
+								{!onErrorModal && (
+									<ButtonModal
+										redirection={handleRedirection}
+										bgColorHover="#4189d0"
+										borderColor="#0e3860"
+									>
+										Go to employees list -&gt;
+									</ButtonModal>
+								)}
 							</>
 						}
 					>
-						New employee created!
+						{onErrorModal ? "Error: Invalid Form! " : "New employee created!"}
 					</Modal>
 				)}
 			</FormContainer>
