@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const Container = styled.div`
 	width: 100%;
@@ -44,12 +44,14 @@ export const Navigation = styled.ul`
 export const Li = styled.li`
 	text-decoration: none;
 	text-align: center;
-	margin-right: 25px;
-	@media screen and (max-width: 425px) {
-		width: 50%;
+	/* margin-right: 25px; */
+	transform-origin: bottom;
+	z-index: 1;
+	:last-child {
 		margin: 0;
 	}
-	:last-child {
+	@media screen and (max-width: 425px) {
+		width: 50%;
 		margin: 0;
 	}
 `

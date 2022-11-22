@@ -22,7 +22,7 @@
 ::placeholder {
 	opacity: 0.4;
 }
-
+	
 input[name="birthday"] {
 	border: var(--border-input-birthday) !important;
 }

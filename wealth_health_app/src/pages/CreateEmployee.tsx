@@ -7,7 +7,7 @@ import StateMapper from "../UI/mappers/StateMapper"
 import { department } from "../mocks/department"
 import useForm from "../utils/formHook"
 import { states } from "../mocks/states"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Modal from "../components/modal/Modal"
 import ButtonModal from "../components/buttons/button-modal/ButtonModal"
 import { useNavigate } from "react-router-dom"
@@ -97,7 +97,6 @@ const ButtonContainer = styled.div`
 
 function CreateEmployee(props: { title: string }) {
 	document.title = props.title
-	const [startDate, setStartDate] = useState<Date | null>(null)
 
 	const navigate = useNavigate()
 
@@ -120,9 +119,9 @@ function CreateEmployee(props: { title: string }) {
 		handleChangeDatePicker
 	} = useForm()
 
-	console.log("values: ", values)
-	console.log("validSuccessForm: ", validSuccessForm)
 	const [isSelectReset, setIsSelectReset] = useState(false)
+	const [isDateReset, setIsDateReset] = useState(false)
+
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
 	const handleDisplayModal = () => {
@@ -133,8 +132,13 @@ function CreateEmployee(props: { title: string }) {
 		setIsSelectReset(isReset)
 	}
 
+	const handleDateReset = (isReset: boolean) => {
+		setIsDateReset(isReset)
+	}
+
 	const handleFormReset = () => {
 		setIsSelectReset(true)
+		setIsDateReset(true)
 		setValues(initialState)
 		setValidSuccessForm(initialState)
 	}
@@ -156,6 +160,7 @@ function CreateEmployee(props: { title: string }) {
 		}
 	}
 
+	console.log("isDateReset: ", isDateReset)
 	return (
 		<>
 			<FormContainer>
@@ -190,6 +195,8 @@ function CreateEmployee(props: { title: string }) {
 					<InfosInputContainer>
 						<Label htmlFor="birthday">Birdthday</Label>
 						<DatePickerInput
+							isReset={isDateReset}
+							setReset={handleDateReset}
 							id="birthday"
 							name="birthday"
 							setValueOnChange={handleChangeDatePicker}
@@ -200,6 +207,8 @@ function CreateEmployee(props: { title: string }) {
 					<InfosInputContainer>
 						<Label htmlFor="startDate">Start Date</Label>
 						<DatePickerInput
+							isReset={isDateReset}
+							setReset={handleDateReset}
 							id="startDate"
 							name="startDate"
 							setValueOnChange={handleChangeDatePicker}
@@ -276,15 +285,6 @@ function CreateEmployee(props: { title: string }) {
 							options={departmentsData}
 						/>
 					</InfosInputContainer>
-					{/* <InfosInputContainer>
-						<DatePickerInput
-							id="startDate"
-							name="startDate"
-							setValueOnChange={handleChangeDatePicker}
-							onCloseCalendar={isValidDatePicker}
-							error={getErrorDatePicker}
-						/>
-					</InfosInputContainer> */}
 					<ButtonContainer>
 						<BtnForm
 							type="reset"
@@ -325,7 +325,7 @@ function CreateEmployee(props: { title: string }) {
 							</>
 						}
 					>
-						New employee created! {values.firstName}
+						New employee created!
 					</Modal>
 				)}
 			</FormContainer>

@@ -10,8 +10,10 @@ function DatePickerInput(props: {
 	setValueOnChange: Function
 	onCloseCalendar: Function
 	error: Function
+	isReset: boolean
+	setReset: Function
 }) {
-	const { id, name, setValueOnChange, onCloseCalendar, error } = props
+	const { id, name, setValueOnChange, onCloseCalendar, error, isReset, setReset } = props
 
 	const errorStyle = new ErrorStyleInput()
 
@@ -19,10 +21,18 @@ function DatePickerInput(props: {
 	const [errorMessage, setErrorMessage] = useState<null | string>(null)
 	const [isValid, setIsValid] = useState<null | boolean>(null)
 
-	useEffect(() => {
-		errorStyle.getStyleError(name, isValid)
-	})
+	const clearInput = (reset: boolean) => {
+		if (reset) {
+			setStartDate(null)
+			setReset(false)
+		}
+	}
 
+	useEffect(() => {
+		clearInput(isReset)
+		errorStyle.getStyleError(name, isValid)
+	}, [isReset, isValid])
+	console.log("isValid", isValid)
 	const handleOnCloseCalendar = (date: Date | null, id: string) => {
 		setIsValid(onCloseCalendar(date, id))
 		setErrorMessage(error(date, id))

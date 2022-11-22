@@ -1,1 +1,4 @@
-@import "/src/styles/datepickerOverride.css";
+/*=================== OVERRIDES LIBS CSS STYLE ===================*/
+
+/* DatePicker overriding */
+@import "../styles/datepickerOverride.css";
