@@ -14,7 +14,6 @@
 	padding: 10px !important;
 	font-size: 16px !important;
 	font-weight: 600 !important;
-	/* border: none !important; */
 	color: #6e8614 !important;
 	width: 100% !important;
 	min-width: 150px !important;
@@ -22,11 +21,26 @@
 ::placeholder {
 	opacity: 0.4;
 }
-	
+
 input[name="birthday"] {
 	border: var(--border-input-birthday) !important;
 }
 
 input[name="startDate"] {
 	border: var(--border-input-startday) !important;
+}
+
+.react-datepicker__header {
+	background-color: #6e8614 !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+	color: #ffffff !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+	background-color: #6e8614 !important;
 }

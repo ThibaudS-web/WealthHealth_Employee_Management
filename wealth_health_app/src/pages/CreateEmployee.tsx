@@ -7,11 +7,13 @@ import StateMapper from "../UI/mappers/StateMapper"
 import { department } from "../mocks/department"
 import useForm from "../utils/formHook"
 import { states } from "../mocks/states"
-import { useEffect, useState } from "react"
-import Modal from "../components/modal/Modal"
+import { useState } from "react"
+// import Modal from "../components/modal/Modal"
+import { Modal } from "@thibaud_s-dev/react-modal-custom"
 import ButtonModal from "../components/buttons/button-modal/ButtonModal"
 import { useNavigate } from "react-router-dom"
 import DatePickerInput from "../components/date-picker/DatePicker"
+import { footerStyle } from "../components/modal/customStyleModal"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -306,7 +308,8 @@ function CreateEmployee(props: { title: string }) {
 						cross={true}
 						overlayClosure={true}
 						title="HRnet"
-						footer={
+						footerStyle={footerStyle}
+						footerContent={
 							<>
 								<ButtonModal
 									setDisplay={handleDisplayModal}
