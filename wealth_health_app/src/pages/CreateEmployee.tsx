@@ -8,7 +8,6 @@ import { department } from "../mocks/department"
 import useForm from "../utils/formHook"
 import { states } from "../mocks/states"
 import { useState } from "react"
-// import Modal from "../components/modal/Modal"
 import { Modal } from "@thibaud_s-dev/react-modal-custom"
 import ButtonModal from "../components/buttons/button-modal/ButtonModal"
 import { useNavigate } from "react-router-dom"
@@ -18,6 +17,8 @@ import {
 	contentValidStyle,
 	footerStyle
 } from "../components/modal/customStyleModal"
+import useEmployees from "../context/EmployeesContext"
+import Employee from "../models/Employee"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -124,6 +125,11 @@ function CreateEmployee(props: { title: string }) {
 		isValidDatePicker,
 		handleChangeDatePicker
 	} = useForm()
+	console.log(useEmployees())
+
+	const { addEmployee, employees } = useEmployees()
+
+	// console.log(employees)
 
 	const [isSelectReset, setIsSelectReset] = useState(false)
 	const [isDateReset, setIsDateReset] = useState(false)
@@ -161,21 +167,25 @@ function CreateEmployee(props: { title: string }) {
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault()
 		if (isValidateForm()) {
+			addEmployee(values)
 			handleDisplayModal(false)
 			handleFormReset()
 		} else {
 			handleDisplayModal(true)
 		}
 	}
+	console.log(values)
+	console.log(employees)
 
-	console.log("isDateReset: ", isDateReset)
 	return (
 		<>
 			<FormContainer>
 				<form onSubmit={handleSubmit} onReset={handleFormReset}>
 					<Infos>Informations</Infos>
 					<InfosInputContainer>
-						<Label htmlFor="firstName">First name</Label>
+						<Label htmlFor="firstName">
+							First name
+						</Label>
 						<InputCustom
 							value={values.firstName}
 							placeholder="Firstname"
@@ -311,8 +321,8 @@ function CreateEmployee(props: { title: string }) {
 				{isModalOpen && (
 					<Modal
 						showModal={isModalOpen}
-						cross={true}
-						overlayClosure={true}
+						cross
+						overlayClosure
 						title="HRnet"
 						contentStyle={onErrorModal ? contentErrorStyle : contentValidStyle}
 						footerStyle={footerStyle}

@@ -1,4 +1,5 @@
 class Employee {
+	id: string
 	firstName: string
 	lastName: string
 	startDate: string
@@ -9,6 +10,7 @@ class Employee {
 	state: string
 	zipCode: string
 	constructor(
+		id: string,
 		firstName: string,
 		lastName: string,
 		startDate: string,
@@ -19,6 +21,7 @@ class Employee {
 		state: string,
 		zipCode: string
 	) {
+		this.id = id
 		this.firstName = firstName
 		this.lastName = lastName
 		this.startDate = startDate

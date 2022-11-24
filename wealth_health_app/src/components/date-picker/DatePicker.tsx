@@ -32,7 +32,7 @@ function DatePickerInput(props: {
 		clearInput(isReset)
 		errorStyle.getStyleError(name, isValid)
 	}, [isReset, isValid])
-	console.log("isValid", isValid)
+	
 	const handleOnCloseCalendar = (date: Date | null, id: string) => {
 		setIsValid(onCloseCalendar(date, id))
 		setErrorMessage(error(date, id))

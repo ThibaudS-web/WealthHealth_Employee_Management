@@ -2,12 +2,16 @@ import { useState } from "react"
 import { SingleValue } from "react-select"
 import ErrorMessage from "./ErrorMessage"
 import ValidInput from "./ValidInput"
+import { v4 as uuidv4 } from "uuid"
 
 function useForm() {
+	const employeeId = uuidv4()
+
 	const inputValidation = new ValidInput()
 	const error = new ErrorMessage()
 
 	const initialState = {
+		id: employeeId,
 		firstName: null,
 		lastName: null,
 		birthday: null,

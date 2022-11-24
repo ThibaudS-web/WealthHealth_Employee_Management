@@ -1,11 +1,13 @@
 import { Routes, Route } from "react-router-dom"
+import { createGlobalStyle } from "styled-components"
 
 import Layout from "./components/Layout/layout/Layout"
 
 import Error from "./pages/Error"
 import CreateEmployee from "./pages/CreateEmployee"
 import Employees from "./pages/Employees"
-import { createGlobalStyle } from "styled-components"
+
+import { EmployeesProvider } from "./context/EmployeesContext"
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -20,17 +22,22 @@ const GlobalStyles = createGlobalStyle`
 function App() {
 	return (
 		<>
-			<GlobalStyles />
-			<Layout>
-				<Routes>
-					<Route path="/" element={<CreateEmployee title="RHnet - Create employee" />} />
-					<Route
-						path="/employees-list"
-						element={<Employees title="RHnet - Employees list" />}
-					/>
-					<Route path="*" element={<Error />} />
-				</Routes>
-			</Layout>
+			<EmployeesProvider>
+				<GlobalStyles />
+				<Layout>
+					<Routes>
+						<Route
+							path="/"
+							element={<CreateEmployee title="RHnet - Create employee" />}
+						/>
+						<Route
+							path="/employees-list"
+							element={<Employees title="RHnet - Employees list" />}
+						/>
+						<Route path="*" element={<Error />} />
+					</Routes>
+				</Layout>
+			</EmployeesProvider>
 		</>
 	)
 }

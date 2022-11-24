@@ -13,5 +13,7 @@ export const contentErrorStyle = {
 export const contentValidStyle = {
 	color: "#6e8614",
 	borderBottom: "2px #6e8614 dotted",
-	borderTop: "2px #6e8614 dotted"
+	borderTop: "2px #6e8614 dotted",
+	
+
 }

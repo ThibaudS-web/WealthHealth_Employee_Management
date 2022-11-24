@@ -44,7 +44,6 @@ export const Navigation = styled.ul`
 export const Li = styled.li`
 	text-decoration: none;
 	text-align: center;
-	/* margin-right: 25px; */
 	transform-origin: bottom;
 	z-index: 1;
 	:last-child {
