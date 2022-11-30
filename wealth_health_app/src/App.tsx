@@ -8,6 +8,8 @@ import CreateEmployee from "./pages/CreateEmployee"
 import Employees from "./pages/Employees"
 
 import { EmployeesProvider } from "./context/EmployeesContext"
+import { useEffect } from "react"
+import EmployeeMock from "./services/EmployeeMock"
 
 const GlobalStyles = createGlobalStyle`
     * {
@@ -20,6 +22,15 @@ const GlobalStyles = createGlobalStyle`
 `
 
 function App() {
+	const fetcherEmployee = new EmployeeMock()
+	const areEmployeedInitialized = false
+
+	useEffect(() => {
+		if (areEmployeedInitialized) {
+			fetcherEmployee.initializeMockEmployee()
+		}
+	})
+
 	return (
 		<>
 			<EmployeesProvider>

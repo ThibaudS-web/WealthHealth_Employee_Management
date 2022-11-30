@@ -1,21 +1,38 @@
 import Employee from "../models/Employee"
 import { ActionsKind } from "./Actions"
 
-export const initialState: any[] = []
+//TODO: Need to be moved in other file
+export class EmployeeListState {
+	private data = localStorage.getItem("employees")
+	employees: Employee[] = this.data ? JSON.parse(this.data) : []
 
-// export type ACTIONTYPES =
-// 	| { type: ActionsKind.ADD_EMPLOYEE; payload: Employee[] }
-// 	| { type: ActionsKind.REMOVE_EMPLOYEE; payload: Employee[] }
+	addEmployees(employee: Employee) {
+		this.employees.push(employee)
+		localStorage.setItem("employees", JSON.stringify(this.employees))
+	}
 
-const employeesReducer = (state: typeof initialState, action: any) => {
+	removeEmployee(employee: Employee) {
+		//TODO: Need to be implemented later
+	}
+}
+
+export const initialState = new EmployeeListState()
+
+export type ACTIONTYPES =
+	| { type: ActionsKind.ADD_EMPLOYEE; payload: Employee }
+	| { type: ActionsKind.REMOVE_EMPLOYEE; payload: Employee }
+
+const employeesReducer = (state: EmployeeListState, action: ACTIONTYPES) => {
 	const { type, payload } = action
 	switch (type) {
 		case ActionsKind.ADD_EMPLOYEE:
 			console.log(ActionsKind.ADD_EMPLOYEE, payload)
-			return [...state, payload]
+			state.addEmployees(payload)
+			return state
 		case ActionsKind.REMOVE_EMPLOYEE:
 			console.log(ActionsKind.REMOVE_EMPLOYEE, payload)
-			return state.filter((currentEmployee) => currentEmployee.name !== payload.id)
+			state.removeEmployee(payload)
+			return state
 		default:
 			throw new Error(`No case for type ${type} found in employeeReducer`)
 	}

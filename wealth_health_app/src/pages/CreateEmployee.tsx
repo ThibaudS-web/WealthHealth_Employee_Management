@@ -19,6 +19,7 @@ import {
 } from "../components/modal/customStyleModal"
 import useEmployees from "../context/EmployeesContext"
 import Employee from "../models/Employee"
+import { v4 as uuidv4 } from "uuid"
 
 const FormContainer = styled.div`
 	height: auto;
@@ -125,11 +126,8 @@ function CreateEmployee(props: { title: string }) {
 		isValidDatePicker,
 		handleChangeDatePicker
 	} = useForm()
-	console.log(useEmployees())
 
-	const { addEmployee, employees } = useEmployees()
-
-	// console.log(employees)
+	const { addEmployee, employees, removeEmployee } = useEmployees()
 
 	const [isSelectReset, setIsSelectReset] = useState(false)
 	const [isDateReset, setIsDateReset] = useState(false)
@@ -163,19 +161,32 @@ function CreateEmployee(props: { title: string }) {
 
 	const statesData = states.map((state) => new StateMapper().mapState(state))
 	const departmentsData = department.map((department) => new SelectData(department, department))
+	const employeeId = uuidv4()
 
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault()
 		if (isValidateForm()) {
-			addEmployee(values)
+			console.log(employees)
+			addEmployee(
+				new Employee(
+					employeeId,
+					values.firstName!!,
+					values.lastName!!,
+					values.startDate!!,
+					values.department!!,
+					values.birthday!!,
+					values.street!!,
+					values.city!!,
+					values.state!!,
+					values.zipCode!!
+				)
+			)
 			handleDisplayModal(false)
 			handleFormReset()
 		} else {
 			handleDisplayModal(true)
 		}
 	}
-	console.log(values)
-	console.log(employees)
 
 	return (
 		<>
@@ -183,9 +194,7 @@ function CreateEmployee(props: { title: string }) {
 				<form onSubmit={handleSubmit} onReset={handleFormReset}>
 					<Infos>Informations</Infos>
 					<InfosInputContainer>
-						<Label htmlFor="firstName">
-							First name
-						</Label>
+						<Label htmlFor="firstName">First name</Label>
 						<InputCustom
 							value={values.firstName}
 							placeholder="Firstname"

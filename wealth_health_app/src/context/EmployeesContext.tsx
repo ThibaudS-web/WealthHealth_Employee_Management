@@ -3,17 +3,16 @@ import Employee from "../models/Employee"
 import { ActionsKind } from "../reducers/Actions"
 import employeesReducer, { initialState } from "../reducers/employeesReducer"
 
-const EmployeesContext = createContext<typeof initialState>(initialState)
+const EmployeesContext = createContext<null | ContextEmployee>(null)
 
-// interface ContextEmployees {
-// 	employees: Employee[]
-// 	addEmployee: (employee: Employee) => void
-// 	removeEmployee: (employee: Employee) => void
-// }
+interface ContextEmployee {
+	employees: Employee[]
+	addEmployee: (employee: Employee) => void
+	removeEmployee: (employee: Employee) => void
+}
 
 export const EmployeesProvider = (props: { children: any }) => {
 	const [state, dispatch] = useReducer(employeesReducer, initialState)
-
 	const addEmployee = (employee: Employee) => {
 		dispatch({
 			type: ActionsKind.ADD_EMPLOYEE,
@@ -28,8 +27,10 @@ export const EmployeesProvider = (props: { children: any }) => {
 		})
 	}
 
-	const value: any = {
-		employees: state,
+	console.log("state", state)
+
+	const value: ContextEmployee = {
+		employees: initialState.employees,
 		addEmployee,
 		removeEmployee
 	}
@@ -37,9 +38,8 @@ export const EmployeesProvider = (props: { children: any }) => {
 	return <EmployeesContext.Provider value={value}>{props.children}</EmployeesContext.Provider>
 }
 
-const useEmployees = () => {
-	const context: any = useContext(EmployeesContext)
-	console.log("context", context)
+const useEmployeesProvider = () => {
+	const context: ContextEmployee = useContext(EmployeesContext)!!
 
 	if (context === undefined) {
 		throw new Error("useEmployees must be used within EmployeesContext")
@@ -48,4 +48,4 @@ const useEmployees = () => {
 	return context
 }
 
-export default useEmployees
+export default useEmployeesProvider

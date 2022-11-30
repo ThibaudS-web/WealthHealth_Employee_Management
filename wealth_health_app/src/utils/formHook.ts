@@ -2,16 +2,12 @@ import { useState } from "react"
 import { SingleValue } from "react-select"
 import ErrorMessage from "./ErrorMessage"
 import ValidInput from "./ValidInput"
-import { v4 as uuidv4 } from "uuid"
 
 function useForm() {
-	const employeeId = uuidv4()
-
 	const inputValidation = new ValidInput()
 	const error = new ErrorMessage()
 
 	const initialState = {
-		id: employeeId,
 		firstName: null,
 		lastName: null,
 		birthday: null,
@@ -23,20 +19,15 @@ function useForm() {
 		department: null
 	}
 
-	const [values, setValues] = useState({
-		...initialState
-	})
+	const [values, setValues] = useState(initialState)
 
-	const [validSuccessForm, setValidSuccessForm] = useState({
-		...initialState
-	})
+	const [validSuccessForm, setValidSuccessForm] = useState(initialState)
 
 	const handleChange = (e: { target: { name: string; value: string } }) => {
-		console.log(e)
-		const { name, value } = e.target
+		let { name, value } = e.target
 		setValues({
 			...values,
-			[name]: value
+			[name]: value.length === 0 ? null : value
 		})
 	}
 
@@ -96,7 +87,7 @@ function useForm() {
 	}
 
 	const isValidateForm = () => {
-		return Object.values(validSuccessForm).every((el) => el)
+		return Object.values(validSuccessForm).every((property) => property)
 	}
 
 	const getError = (e: { target: { value: string } }, id: string): string => {

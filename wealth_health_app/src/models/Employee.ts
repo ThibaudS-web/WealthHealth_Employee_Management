@@ -2,9 +2,9 @@ class Employee {
 	id: string
 	firstName: string
 	lastName: string
-	startDate: string
+	startDate: Date
 	department: string
-	birthday: string
+	birthday: Date
 	street: string
 	city: string
 	state: string
@@ -13,9 +13,9 @@ class Employee {
 		id: string,
 		firstName: string,
 		lastName: string,
-		startDate: string,
+		startDate: Date,
 		department: string,
-		birthday: string,
+		birthday: Date,
 		street: string,
 		city: string,
 		state: string,
