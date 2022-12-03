@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-table": "^8.7.0",
     "@thibaud_s-dev/react-modal-custom": "^0.10.0",
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",

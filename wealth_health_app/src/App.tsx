@@ -23,6 +23,7 @@ const GlobalStyles = createGlobalStyle`
 
 function App() {
 	const fetcherEmployee = new EmployeeMock()
+	// Set it at true for generate employees
 	const areEmployeedInitialized = false
 
 	useEffect(() => {
