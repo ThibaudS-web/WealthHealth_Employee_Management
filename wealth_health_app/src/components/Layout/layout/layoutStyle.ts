@@ -11,5 +11,4 @@ export const DivFlex = styled.div`
 export const Main = styled.main`
 	width: 100%;
 	height: 100%;
-	display: flex;
 `

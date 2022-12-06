@@ -5,7 +5,7 @@ import DropDownSelect from "../components/select/Select"
 import SelectData from "../models/SelectState"
 import StateMapper from "../UI/mappers/StateMapper"
 import { department } from "../mocks/department"
-import useForm from "../utils/formHook"
+import useForm from "../utils/useForm"
 import { states } from "../mocks/states"
 import { useState } from "react"
 import { Modal } from "@thibaud_s-dev/react-modal-custom"
@@ -102,6 +102,11 @@ const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 `
+const FlexWrapper = styled.div`
+	display: flex;
+	width: 100%;
+	height: 100%;
+`
 
 function CreateEmployee(props: { title: string }) {
 	document.title = props.title
@@ -190,179 +195,181 @@ function CreateEmployee(props: { title: string }) {
 
 	return (
 		<>
-			<FormContainer>
-				<form onSubmit={handleSubmit} onReset={handleFormReset}>
-					<Infos>Informations</Infos>
-					<InfosInputContainer>
-						<Label htmlFor="firstName">First name</Label>
-						<InputCustom
-							value={values.firstName}
-							placeholder="Firstname"
-							type="text"
-							id="firstName"
-							name="firstName"
-							error={getError}
-							setValueOnChange={handleChange}
-							setValueOnBlur={isValid}
-						/>
-					</InfosInputContainer>
-					<InfosInputContainer>
-						<Label htmlFor="lastName">Last name</Label>
-						<InputCustom
-							value={values.lastName}
-							placeholder="Lastname"
-							type="text"
-							id="lastName"
-							name="lastName"
-							error={getError}
-							setValueOnBlur={isValid}
-							setValueOnChange={handleChange}
-						/>
-					</InfosInputContainer>
-					<InfosInputContainer>
-						<Label htmlFor="birthday">Birdthday</Label>
-						<DatePickerInput
-							isReset={isDateReset}
-							setReset={handleDateReset}
-							id="birthday"
-							name="birthday"
-							setValueOnChange={handleChangeDatePicker}
-							onCloseCalendar={isValidDatePicker}
-							error={getErrorDatePicker}
-						/>
-					</InfosInputContainer>
-					<InfosInputContainer>
-						<Label htmlFor="startDate">Start Date</Label>
-						<DatePickerInput
-							isReset={isDateReset}
-							setReset={handleDateReset}
-							id="startDate"
-							name="startDate"
-							setValueOnChange={handleChangeDatePicker}
-							onCloseCalendar={isValidDatePicker}
-							error={getErrorDatePicker}
-						/>
-					</InfosInputContainer>
-					<FieldSet>
-						<Legend>Address</Legend>
-						<InputContainerInField>
-							<Label htmlFor="state">State</Label>
+			<FlexWrapper>
+				<FormContainer>
+					<form onSubmit={handleSubmit} onReset={handleFormReset}>
+						<Infos>Informations</Infos>
+						<InfosInputContainer>
+							<Label htmlFor="firstName">First name</Label>
+							<InputCustom
+								value={values.firstName}
+								placeholder="Firstname"
+								type="text"
+								id="firstName"
+								name="firstName"
+								error={getError}
+								setValueOnChange={handleChange}
+								setValueOnBlur={isValid}
+							/>
+						</InfosInputContainer>
+						<InfosInputContainer>
+							<Label htmlFor="lastName">Last name</Label>
+							<InputCustom
+								value={values.lastName}
+								placeholder="Lastname"
+								type="text"
+								id="lastName"
+								name="lastName"
+								error={getError}
+								setValueOnBlur={isValid}
+								setValueOnChange={handleChange}
+							/>
+						</InfosInputContainer>
+						<InfosInputContainer>
+							<Label htmlFor="birthday">Birdthday</Label>
+							<DatePickerInput
+								isReset={isDateReset}
+								setReset={handleDateReset}
+								id="birthday"
+								name="birthday"
+								setValueOnChange={handleChangeDatePicker}
+								onCloseCalendar={isValidDatePicker}
+								error={getErrorDatePicker}
+							/>
+						</InfosInputContainer>
+						<InfosInputContainer>
+							<Label htmlFor="startDate">Start Date</Label>
+							<DatePickerInput
+								isReset={isDateReset}
+								setReset={handleDateReset}
+								id="startDate"
+								name="startDate"
+								setValueOnChange={handleChangeDatePicker}
+								onCloseCalendar={isValidDatePicker}
+								error={getErrorDatePicker}
+							/>
+						</InfosInputContainer>
+						<FieldSet>
+							<Legend>Address</Legend>
+							<InputContainerInField>
+								<Label htmlFor="state">State</Label>
+								<DropDownSelect
+									isReset={isSelectReset}
+									id="state"
+									name="state"
+									setReset={handleSelectReset}
+									error={getErrorSelect}
+									setValueOnChange={handleChangeSelect}
+									options={statesData}
+									setValueOnBlur={isValidSelect}
+								/>
+							</InputContainerInField>
+							<InputContainerInField>
+								<Label htmlFor="city">City</Label>
+								<InputCustom
+									value={values.city}
+									placeholder="CITY"
+									type="text"
+									id="city"
+									name="city"
+									error={getError}
+									setValueOnBlur={isValid}
+									setValueOnChange={handleChange}
+								/>
+							</InputContainerInField>
+							<InputContainerInField>
+								<Label htmlFor="street">Street</Label>
+								<InputCustom
+									value={values.street}
+									placeholder="5 rue des champs"
+									type="text"
+									id="street"
+									name="street"
+									error={getError}
+									setValueOnBlur={isValid}
+									setValueOnChange={handleChange}
+								/>
+							</InputContainerInField>
+							<InputContainerInField>
+								<Label htmlFor="zipCode">Zip code</Label>
+								<InputCustom
+									value={values.zipCode}
+									placeholder="eg: 16100"
+									type="text"
+									id="zipCode"
+									name="zipCode"
+									zipcodeInput={true}
+									error={getError}
+									setValueOnBlur={isValid}
+									setValueOnChange={handleChange}
+								/>
+							</InputContainerInField>
+						</FieldSet>
+						<InfosInputContainer>
+							<Label htmlFor="department">Department</Label>
 							<DropDownSelect
 								isReset={isSelectReset}
-								id="state"
-								name="state"
+								id="department"
+								name="department"
 								setReset={handleSelectReset}
 								error={getErrorSelect}
-								setValueOnChange={handleChangeSelect}
-								options={statesData}
 								setValueOnBlur={isValidSelect}
+								setValueOnChange={handleChangeSelect}
+								options={departmentsData}
 							/>
-						</InputContainerInField>
-						<InputContainerInField>
-							<Label htmlFor="city">City</Label>
-							<InputCustom
-								value={values.city}
-								placeholder="CITY"
-								type="text"
-								id="city"
-								name="city"
-								error={getError}
-								setValueOnBlur={isValid}
-								setValueOnChange={handleChange}
+						</InfosInputContainer>
+						<ButtonContainer>
+							<BtnForm
+								type="reset"
+								role="cancel"
+								textColor="#6e8615"
+								background="#ffffff"
 							/>
-						</InputContainerInField>
-						<InputContainerInField>
-							<Label htmlFor="street">Street</Label>
-							<InputCustom
-								value={values.street}
-								placeholder="5 rue des champs"
-								type="text"
-								id="street"
-								name="street"
-								error={getError}
-								setValueOnBlur={isValid}
-								setValueOnChange={handleChange}
+							<BtnForm
+								type="submit"
+								role="register"
+								textColor="#ffffff"
+								background="#6e8615"
 							/>
-						</InputContainerInField>
-						<InputContainerInField>
-							<Label htmlFor="zipCode">Zip code</Label>
-							<InputCustom
-								value={values.zipCode}
-								placeholder="eg: 16100"
-								type="text"
-								id="zipCode"
-								name="zipCode"
-								zipcodeInput={true}
-								error={getError}
-								setValueOnBlur={isValid}
-								setValueOnChange={handleChange}
-							/>
-						</InputContainerInField>
-					</FieldSet>
-					<InfosInputContainer>
-						<Label htmlFor="department">Department</Label>
-						<DropDownSelect
-							isReset={isSelectReset}
-							id="department"
-							name="department"
-							setReset={handleSelectReset}
-							error={getErrorSelect}
-							setValueOnBlur={isValidSelect}
-							setValueOnChange={handleChangeSelect}
-							options={departmentsData}
-						/>
-					</InfosInputContainer>
-					<ButtonContainer>
-						<BtnForm
-							type="reset"
-							role="cancel"
-							textColor="#6e8615"
-							background="#ffffff"
-						/>
-						<BtnForm
-							type="submit"
-							role="register"
-							textColor="#ffffff"
-							background="#6e8615"
-						/>
-					</ButtonContainer>
-				</form>
-				{isModalOpen && (
-					<Modal
-						showModal={isModalOpen}
-						cross
-						overlayClosure
-						title="HRnet"
-						contentStyle={onErrorModal ? contentErrorStyle : contentValidStyle}
-						footerStyle={footerStyle}
-						footerContent={
-							<>
-								<ButtonModal
-									setDisplay={() => handleDisplayModal(onErrorModal)}
-									bgColorHover="#d4dea3"
-									borderColor="#6e8614"
-								>
-									Ok
-								</ButtonModal>
-								{!onErrorModal && (
+						</ButtonContainer>
+					</form>
+					{isModalOpen && (
+						<Modal
+							showModal={isModalOpen}
+							cross
+							overlayClosure
+							title="HRnet"
+							contentStyle={onErrorModal ? contentErrorStyle : contentValidStyle}
+							footerStyle={footerStyle}
+							footerContent={
+								<>
 									<ButtonModal
-										redirection={handleRedirection}
-										bgColorHover="#4189d0"
-										borderColor="#0e3860"
+										setDisplay={() => handleDisplayModal(onErrorModal)}
+										bgColorHover="#d4dea3"
+										borderColor="#6e8614"
 									>
-										Go to employees list -&gt;
+										Ok
 									</ButtonModal>
-								)}
-							</>
-						}
-					>
-						{onErrorModal ? "Error: Invalid Form! " : "New employee created!"}
-					</Modal>
-				)}
-			</FormContainer>
-			<ImageContainer>
-				<Image src="/src/assets/wealth_health_location.jpg" />
-			</ImageContainer>
+									{!onErrorModal && (
+										<ButtonModal
+											redirection={handleRedirection}
+											bgColorHover="#4189d0"
+											borderColor="#0e3860"
+										>
+											Go to employees list -&gt;
+										</ButtonModal>
+									)}
+								</>
+							}
+						>
+							{onErrorModal ? "Error: Invalid Form! " : "New employee created!"}
+						</Modal>
+					)}
+				</FormContainer>
+				<ImageContainer>
+					<Image src="/src/assets/wealth_health_location.jpg" />
+				</ImageContainer>
+			</FlexWrapper>
 		</>
 	)
 }

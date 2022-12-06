@@ -1,133 +1,90 @@
 import useEmployeesProvider from "../context/EmployeesContext"
-import {
-	createColumnHelper,
-	getCoreRowModel,
-	useReactTable,
-	flexRender,
-	TableOptions,
-	ColumnDef,
-	ColumnDefBase,
-	SortingState,
-	getSortedRowModel
-} from "@tanstack/react-table"
+import Table from "../components/table/Table"
+import styled from "styled-components"
+import { SetStateAction, useState } from "react"
 import Employee from "../models/Employee"
-import { useMemo, useState } from "react"
+
+const BackgroundEmployeesPage = styled.div`
+	background-color: #d4dea3;
+	height: 100%;
+	width: 100%;
+`
+const Input = styled.input`
+	height: 30px;
+	border-radius: 15px;
+	border: none;
+	padding: 10px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #6e8614;
+	width: 250px;
+	::placeholder {
+		opacity: 0.4;
+	}
+	@media screen and (max-width: 760px) {
+		font-size: 14px;
+	}
+`
+const TableContainer = styled.div`
+	background-color: #ffffff;
+	border-radius: 2rem;
+	width: fit-content;
+	padding: 3rem;
+`
+const Label = styled.label`
+	font-size: 20px;
+	margin-right: 10px;
+	color: white;
+	font-weight: 500;
+	@media screen and (max-width: 760px) {
+		font-size: 16px;
+	}
+`
 
 function Employees(props: { title: string }) {
 	document.title = props.title
 
-	const { employees, addEmployee } = useEmployeesProvider()
+	const { employees } = useEmployeesProvider()
 
-	const columnHelper = createColumnHelper<Employee>()
+	const [employeesFilter, setEmployeesFilter] = useState<Employee[]>(employees)
 
-	const columns = useMemo(
-		() => [
-			columnHelper.accessor("firstName", {
-				cell: (info) => info.getValue(),
-				footer: (info) => info.column.id
-			}),
-			columnHelper.accessor("lastName", {
-				cell: (info) => info.getValue(),
-				footer: (info) => info.column.id
-			}),
-			columnHelper.accessor("startDate", {
-				cell: (info) => info.getValue(),
-				footer: (info) => info.column.id
-			}),
-			columnHelper.accessor("birthday", {
-				cell: (info) => info.getValue(),
-				footer: (info) => info.column.id
-			}),
-			columnHelper.accessor("department", {
-				cell: (info) => info.getValue(),
-				footer: (info) => info.column.id
-			}),
-			columnHelper.accessor("state", {
-				cell: (info) => info.getValue(),
-				footer: (info) => info.column.id
-			}),
-			columnHelper.accessor("city", {
-				cell: (info) => info.getValue(),
-				footer: (info) => info.column.id
-			}),
-			columnHelper.accessor("zipCode", {
-				cell: (info) => info.getValue(),
-				footer: (info) => info.column.id
-			}),
-			columnHelper.accessor("street", {
-				cell: (info) => info.getValue(),
-				footer: (info) => info.column.id
-			})
-		],
-		[]
-	)
+	const handleSetValue = (e: { target: { value: string } }) => {
+		setEmployeesFilter(filterEmployees(e.target.value))
+	}
 
-	const [data, setData] = useState(employees)
-	const [sorting, setSorting] = useState<SortingState>([])
+	const filterEmployees = (value: string) => {
+		if (value.length === 0) return employees
 
-	const table = useReactTable({
-		data,
-		columns,
-		state: {
-			sorting
-		},
-		onSortingChange: setSorting,
-		getCoreRowModel: getCoreRowModel(),
-		getSortedRowModel: getSortedRowModel(),
-		debugTable: true
-	})
-	console.log("employees", employees)
+		const filter = employees.filter(
+			(employee) =>
+				employee.firstName.toLowerCase().includes(value.toLowerCase().trim()) ||
+				employee.lastName.toLowerCase().includes(value.toLowerCase().trim()) ||
+				employee.state.toLowerCase().includes(value.toLowerCase().trim()) ||
+				employee.birthday.toString().includes(value.trim()) ||
+				employee.startDate.toString().includes(value.trim()) ||
+				employee.city.toLowerCase().includes(value.toLowerCase().trim()) ||
+				employee.street.toLowerCase().includes(value.toLowerCase().trim()) ||
+				employee.department.toLowerCase().includes(value.toLowerCase().trim())
+		)
+
+		const employeesFiltered = new Set([...filter])
+
+		return [...employeesFiltered.values()]
+	}
 
 	return (
 		<>
-			<div>
-				<table>
-					<thead>
-						{table.getHeaderGroups().map((headerGroup) => (
-							<tr key={headerGroup.id}>
-								{headerGroup.headers.map((header) => (
-									<th
-										style={{ padding: "10px", textAlign: "left" }}
-										key={header.id}
-									>
-										{header.isPlaceholder ? null : (
-											<div
-												{...{
-													className: header.column.getCanSort()
-														? "cursor-pointer select-none"
-														: "",
-													onClick: header.column.getToggleSortingHandler()
-												}}
-											>
-												{flexRender(
-													header.column.columnDef.header,
-													header.getContext()
-												)}
-												{{
-													asc: " 🔼",
-													desc: " 🔽"
-												}[header.column.getIsSorted() as string] ?? null}
-											</div>
-										)}
-									</th>
-								))}
-							</tr>
-						))}
-					</thead>
-					<tbody>
-						{table.getRowModel().rows.map((row) => (
-							<tr key={row.id}>
-								{row.getVisibleCells().map((cell) => (
-									<td style={{ padding: "10px" }} key={cell.id}>
-										{flexRender(cell.column.columnDef.cell, cell.getContext())}
-									</td>
-								))}
-							</tr>
-						))}
-					</tbody>
-				</table>
-				<div className="h-4" />
-			</div>
+			<BackgroundEmployeesPage>
+				<Label htmlFor="filterInput">Find an employee</Label>
+				<Input id="filterInput" onChange={handleSetValue} placeholder="Search..." />
+				<TableContainer>
+					{employees.length !== 0 ? (
+						<Table employees={employeesFilter} />
+					) : (
+						<p>No employee is registered in database</p>
+					)}
+				</TableContainer>
+			</BackgroundEmployeesPage>
 		</>
 	)
 }
