@@ -1,8 +1,9 @@
 import useEmployeesProvider from "../context/EmployeesContext"
 import Table from "../components/table/Table"
 import styled from "styled-components"
-import { SetStateAction, useState } from "react"
+import { useState } from "react"
 import Employee from "../models/Employee"
+import filterEmployees from "../utils/filter"
 
 const BackgroundEmployeesPage = styled.div`
 	background-color: #d4dea3;
@@ -46,31 +47,10 @@ function Employees(props: { title: string }) {
 
 	const { employees } = useEmployeesProvider()
 
-	const [employeesFilter, setEmployeesFilter] = useState<Employee[]>(employees)
+	const [employeesFiltered, setEmployeesFiltered] = useState<Employee[]>(employees)
 
 	const handleSetValue = (e: { target: { value: string } }) => {
-		setEmployeesFilter(filterEmployees(e.target.value))
-	}
-
-	const filterEmployees = (value: string) => {
-		if (value.length === 0) return employees
-
-		const filter = employees.filter(
-			(employee) =>
-				employee.firstName.toLowerCase().includes(value.toLowerCase().trim()) ||
-				employee.lastName.toLowerCase().includes(value.toLowerCase().trim()) ||
-				employee.state.toLowerCase().includes(value.toLowerCase().trim()) ||
-				employee.birthday.toString().includes(value.trim()) ||
-				employee.startDate.toString().includes(value.trim()) ||
-				employee.zipCode.includes(value.trim()) ||
-				employee.city.toLowerCase().includes(value.toLowerCase().trim()) ||
-				employee.street.toLowerCase().includes(value.toLowerCase().trim()) ||
-				employee.department.toLowerCase().includes(value.toLowerCase().trim())
-		)
-
-		const employeesFiltered = new Set([...filter])
-
-		return [...employeesFiltered.values()]
+		setEmployeesFiltered(filterEmployees(e.target.value, employees))
 	}
 
 	return (
@@ -80,7 +60,7 @@ function Employees(props: { title: string }) {
 				<Input id="filterInput" onChange={handleSetValue} placeholder="Search..." />
 				<TableContainer>
 					{employees.length !== 0 ? (
-						<Table employees={employeesFilter} />
+						<Table employees={employeesFiltered} />
 					) : (
 						<p>No employee is registered in database</p>
 					)}
