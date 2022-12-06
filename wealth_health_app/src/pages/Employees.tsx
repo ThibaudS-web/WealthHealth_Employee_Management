@@ -62,6 +62,7 @@ function Employees(props: { title: string }) {
 				employee.state.toLowerCase().includes(value.toLowerCase().trim()) ||
 				employee.birthday.toString().includes(value.trim()) ||
 				employee.startDate.toString().includes(value.trim()) ||
+				employee.zipCode.includes(value.trim()) ||
 				employee.city.toLowerCase().includes(value.toLowerCase().trim()) ||
 				employee.street.toLowerCase().includes(value.toLowerCase().trim()) ||
 				employee.department.toLowerCase().includes(value.toLowerCase().trim())
