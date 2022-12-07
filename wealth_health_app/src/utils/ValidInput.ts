@@ -26,7 +26,7 @@ class ValidInput {
 
 	private isNameValid(value: string): boolean {
 		//Uppercase first letter
-		const nameRegExp = new RegExp("^[A-Z][a-zA-Z-'^\u00C0-\u017F ]{2,20}$", "g")
+		const nameRegExp = new RegExp("^[A-Z][a-zA-Z-'^\u00C0-\u017F\\s]{2,20}$", "g")
 		return nameRegExp.test(value)
 	}
 
@@ -36,13 +36,13 @@ class ValidInput {
 
 	private isStreetValid(value: string): boolean {
 		//Starts with a number
-		const streetRegExp = new RegExp("^[0-9][0-9]{0,3}[a-zA-Z-'\u00C0-\u017F ]{2,30}$", "g")
+		const streetRegExp = new RegExp("^[0-9][0-9]{0,3}[a-zA-Z-'\u00C0-\u017F\\s]{2,30}$", "g")
 		return streetRegExp.test(value)
 	}
 
 	private isCityValid(value: string): boolean {
 		//Only UPPERCASE
-		const cityRegExp = new RegExp("[A-Z-'\u00C0-\u017F ]{3,80}$", "g")
+		const cityRegExp = new RegExp("[A-Z-'\u00C0-\u017F\\s]{3,80}$", "g")
 		return cityRegExp.test(value)
 	}
 

@@ -1,4 +1,5 @@
 import Employee from "../models/Employee"
+import { departments } from "../mocks/department"
 
 class EmployeeMock {
 	private async getEmployee(): Promise<Employee[]> {
@@ -12,9 +13,15 @@ class EmployeeMock {
 		}
 	}
 
+	private getRandomDepartment() {
+		const randomizeIndex = Math.round(Math.random() * (departments.length - 1))
+		return departments[randomizeIndex]
+	}
+
 	public initializeMockEmployee() {
 		const employees = this.getEmployee()
 		const listEmployees: Employee[] = []
+
 		employees
 			.then((employees) =>
 				employees.map(
@@ -24,7 +31,7 @@ class EmployeeMock {
 							employee.firstName,
 							employee.lastName,
 							employee.startDate,
-							employee.department,
+							this.getRandomDepartment(),
 							employee.birthday,
 							employee.street,
 							employee.city,
@@ -35,9 +42,10 @@ class EmployeeMock {
 			)
 			.then((employees) => {
 				listEmployees.push(...employees)
+				console.log(listEmployees)
 				localStorage.setItem("employees", JSON.stringify(listEmployees))
 			})
 	}
 }
-
+//TODO: Event on click addEmployees on table (*10)
 export default EmployeeMock

@@ -4,13 +4,29 @@ import {
 	useReactTable,
 	flexRender,
 	SortingState,
-	getSortedRowModel
+	getSortedRowModel,
+	getPaginationRowModel
 } from "@tanstack/react-table"
 
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
+
 import Employee from "../../models/Employee"
 
-function Table(props: { employees: Employee[] }) {
+import colorRow from "../../utils/colorRow"
+
+import {
+	Table,
+	ColumnRow,
+	Button,
+	ProgressPage,
+	LabelPage,
+	InputPage,
+	Cell,
+	Column,
+	SelectPage
+} from "./tableStyle"
+
+function CustomTable(props: { employees: Employee[] }) {
 	const { employees } = props
 
 	const columnHelper = createColumnHelper<Employee>()
@@ -68,27 +84,22 @@ function Table(props: { employees: Employee[] }) {
 		onSortingChange: setSorting,
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
+		getPaginationRowModel: getPaginationRowModel(),
 		debugTable: false
 	})
 
 	return (
 		<>
 			<div>
-				<table>
+				<Table>
 					<thead>
 						{table.getHeaderGroups().map((headerGroup) => (
-							<tr key={headerGroup.id}>
+							<ColumnRow key={headerGroup.id}>
 								{headerGroup.headers.map((header) => (
-									<th
-										style={{ padding: "10px", textAlign: "left" }}
-										key={header.id}
-									>
+									<Column key={header.id}>
 										{header.isPlaceholder ? null : (
 											<div
 												{...{
-													className: header.column.getCanSort()
-														? "cursor-pointer select-none"
-														: "",
 													onClick: header.column.getToggleSortingHandler()
 												}}
 											>
@@ -102,27 +113,82 @@ function Table(props: { employees: Employee[] }) {
 												}[header.column.getIsSorted() as string] ?? null}
 											</div>
 										)}
-									</th>
+									</Column>
 								))}
-							</tr>
+							</ColumnRow>
 						))}
 					</thead>
 					<tbody>
 						{table.getRowModel().rows.map((row) => (
-							<tr key={row.id}>
+							<tr style={colorRow()} key={row.id}>
 								{row.getVisibleCells().map((cell) => (
-									<td style={{ padding: "10px" }} key={cell.id}>
+									<Cell key={cell.id}>
 										{flexRender(cell.column.columnDef.cell, cell.getContext())}
-									</td>
+									</Cell>
 								))}
 							</tr>
 						))}
 					</tbody>
-				</table>
-				<div className="h-4" />
+				</Table>
+				<div />
+				<div>
+					<Button
+						onClick={() => table.setPageIndex(0)}
+						disabled={!table.getCanPreviousPage()}
+					>
+						{"<<"}
+					</Button>
+					<Button
+						onClick={() => table.previousPage()}
+						disabled={!table.getCanPreviousPage()}
+					>
+						{"<"}
+					</Button>
+					<Button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+						{">"}
+					</Button>
+					<Button
+						onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+						disabled={!table.getCanNextPage()}
+					>
+						{">>"}
+					</Button>
+					<span>
+						<ProgressPage>
+							Page{" "}
+							<strong>
+								{" "}
+								{table.getState().pagination.pageIndex + 1} of{" "}
+								{table.getPageCount()}
+							</strong>
+						</ProgressPage>
+					</span>
+					<LabelPage htmlFor="pageNumberInput">Go to page:</LabelPage>
+					<InputPage
+						type="number"
+						id="pageNumberInput"
+						defaultValue={table.getState().pagination.pageIndex + 1}
+						onChange={(e) => {
+							const page = e.target.value ? Number(e.target.value) - 1 : 0
+							table.setPageIndex(page)
+						}}
+					/>
+					<SelectPage
+						value={table.getState().pagination.pageSize}
+						onChange={(e) => {
+							table.setPageSize(Number(e.target.value))
+						}}
+					>
+						{[10, 20, 30, 40, 50].map((pageSize) => (
+							<option key={pageSize} value={pageSize}>
+								Show <strong>{pageSize}</strong> employees
+							</option>
+						))}
+					</SelectPage>
+				</div>
 			</div>
 		</>
 	)
 }
 
-export default Table
+export default CustomTable

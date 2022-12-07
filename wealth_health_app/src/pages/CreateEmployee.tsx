@@ -4,7 +4,7 @@ import InputCustom from "../components/input/InputCustom"
 import DropDownSelect from "../components/select/Select"
 import SelectData from "../models/SelectState"
 import StateMapper from "../UI/mappers/StateMapper"
-import { department } from "../mocks/department"
+import { departments } from "../mocks/department"
 import useForm from "../utils/useForm"
 import { states } from "../mocks/states"
 import { useState } from "react"
@@ -165,7 +165,7 @@ function CreateEmployee(props: { title: string }) {
 	}
 
 	const statesData = states.map((state) => new StateMapper().mapState(state))
-	const departmentsData = department.map((department) => new SelectData(department, department))
+	const departmentsData = departments.map((department) => new SelectData(department, department))
 	const employeeId = uuidv4()
 
 	const handleSubmit = (e: { preventDefault: () => void }) => {

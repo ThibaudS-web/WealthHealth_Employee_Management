@@ -1,5 +1,5 @@
 import useEmployeesProvider from "../context/EmployeesContext"
-import Table from "../components/table/Table"
+import CustomTable from "../components/table/Table"
 import styled from "styled-components"
 import { useState } from "react"
 import Employee from "../models/Employee"
@@ -31,6 +31,9 @@ const TableContainer = styled.div`
 	border-radius: 2rem;
 	width: fit-content;
 	padding: 3rem;
+	max-height: 59vh;
+	min-height: 59vh;
+	overflow-y: auto;
 `
 const Label = styled.label`
 	font-size: 20px;
@@ -60,7 +63,7 @@ function Employees(props: { title: string }) {
 				<Input id="filterInput" onChange={handleSetValue} placeholder="Search..." />
 				<TableContainer>
 					{employees.length !== 0 ? (
-						<Table employees={employeesFiltered} />
+						<CustomTable employees={employeesFiltered} />
 					) : (
 						<p>No employee is registered in database</p>
 					)}
