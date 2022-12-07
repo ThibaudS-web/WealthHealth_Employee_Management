@@ -5,7 +5,7 @@ class EmployeeMock {
 	private async getEmployee(): Promise<Employee[]> {
 		let data: Employee[]
 		try {
-			const result = await fetch(`http://localhost:5173/public/mock/employees.json`)
+			const result = await fetch(`http://localhost:5173/mock/employees.json`)
 			data = await result.json()
 			return data
 		} catch (err) {

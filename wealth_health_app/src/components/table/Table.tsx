@@ -155,12 +155,8 @@ function CustomTable(props: { employees: Employee[] }) {
 					</Button>
 					<span>
 						<ProgressPage>
-							Page{" "}
-							<strong>
-								{" "}
-								{table.getState().pagination.pageIndex + 1} of{" "}
-								{table.getPageCount()}
-							</strong>
+							Page {table.getState().pagination.pageIndex + 1} of{" "}
+							{table.getPageCount()}
 						</ProgressPage>
 					</span>
 					<LabelPage htmlFor="pageNumberInput">Go to page:</LabelPage>
@@ -181,7 +177,7 @@ function CustomTable(props: { employees: Employee[] }) {
 					>
 						{[10, 20, 30, 40, 50].map((pageSize) => (
 							<option key={pageSize} value={pageSize}>
-								Show <strong>{pageSize}</strong> employees
+								Show {pageSize} employees
 							</option>
 						))}
 					</SelectPage>
