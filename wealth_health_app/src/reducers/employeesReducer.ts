@@ -10,29 +10,19 @@ export class EmployeeListState {
 		this.employees.push(employee)
 		localStorage.setItem("employees", JSON.stringify(this.employees))
 	}
-
-	removeEmployee(employee: Employee) {
-		//TODO: Need to be implemented later
-	}
 }
 
 export const initialState = new EmployeeListState()
 
-export type ACTIONTYPES =
-	| { type: ActionsKind.ADD_EMPLOYEE; payload: Employee }
-	| { type: ActionsKind.REMOVE_EMPLOYEE; payload: Employee }
+export type ACTIONTYPES = { type: ActionsKind.ADD_EMPLOYEE; payload: Employee }
 
 const employeesReducer = (state: EmployeeListState, action: ACTIONTYPES) => {
 	const { type, payload } = action
 	switch (type) {
 		case ActionsKind.ADD_EMPLOYEE:
-			console.log(ActionsKind.ADD_EMPLOYEE, payload)
 			state.addEmployees(payload)
 			return state
-		case ActionsKind.REMOVE_EMPLOYEE:
-			console.log(ActionsKind.REMOVE_EMPLOYEE, payload)
-			state.removeEmployee(payload)
-			return state
+
 		default:
 			throw new Error(`No case for type ${type} found in employeeReducer`)
 	}

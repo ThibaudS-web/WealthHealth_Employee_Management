@@ -2,7 +2,8 @@ import Employee from "../models/Employee"
 import { departments } from "../mocks/department"
 
 class EmployeeMock {
-	private async getEmployee(): Promise<Employee[]> {
+	count = 0
+	private async getEmployees(): Promise<Employee[]> {
 		let data: Employee[]
 		try {
 			const result = await fetch(`http://localhost:5173/mock/employees.json`)
@@ -18,34 +19,29 @@ class EmployeeMock {
 		return departments[randomizeIndex]
 	}
 
-	public initializeMockEmployee() {
-		const employees = this.getEmployee()
-		const listEmployees: Employee[] = []
-
-		employees
-			.then((employees) =>
-				employees.map(
-					(employee) =>
-						new Employee(
-							employee.id,
-							employee.firstName,
-							employee.lastName,
-							employee.startDate,
-							this.getRandomDepartment(),
-							employee.birthday,
-							employee.street,
-							employee.city,
-							employee.state,
-							employee.zipCode
-						)
-				)
+	public async addMockEmployees() {
+		const employees = await this.getEmployees()
+		console.log(employees.slice(this.count, this.count + 10))
+		const employeesMapped = employees
+			.slice(this.count, this.count + 10)
+			.map(
+				(employee) =>
+					new Employee(
+						employee.id,
+						employee.firstName,
+						employee.lastName,
+						employee.startDate,
+						this.getRandomDepartment(),
+						employee.birthday,
+						employee.street,
+						employee.city,
+						employee.state,
+						employee.zipCode
+					)
 			)
-			.then((employees) => {
-				listEmployees.push(...employees)
-				console.log(listEmployees)
-				localStorage.setItem("employees", JSON.stringify(listEmployees))
-			})
+		this.count += 10
+		return employeesMapped
 	}
 }
-//TODO: Event on click addEmployees on table (*10)
+
 export default EmployeeMock

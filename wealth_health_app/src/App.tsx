@@ -4,8 +4,8 @@ import { createGlobalStyle } from "styled-components"
 import Layout from "./components/Layout/layout/Layout"
 
 import Error from "./pages/Error"
-import CreateEmployee from "./pages/CreateEmployee"
-import Employees from "./pages/Employees"
+import CreateEmployee from "./pages/create-employee/CreateEmployee"
+import Employees from "./pages/employees/Employees"
 
 import { EmployeesProvider } from "./context/EmployeesContext"
 import { useEffect } from "react"
@@ -22,15 +22,15 @@ const GlobalStyles = createGlobalStyle`
 `
 
 function App() {
-	const fetcherEmployee = new EmployeeMock()
-	// Set it at true for generate employees
-	const areEmployeedInitialized = true
+	// const fetcherEmployee = new EmployeeMock()
+	// // Set it at true for generate employees
+	// const areEmployeedInitialized = false
 
-	useEffect(() => {
-		if (areEmployeedInitialized) {
-			fetcherEmployee.initializeMockEmployee()
-		}
-	})
+	// useEffect(() => {
+	// 	if (areEmployeedInitialized) {
+	// 		fetcherEmployee.initializeMockEmployee()
+	// 	}
+	// })
 
 	return (
 		<>

@@ -1,111 +1,42 @@
 import styled from "styled-components"
-import BtnForm from "../components/buttons/button-form/ButtonForm"
-import InputCustom from "../components/input/InputCustom"
-import DropDownSelect from "../components/select/Select"
-import SelectData from "../models/SelectState"
-import StateMapper from "../UI/mappers/StateMapper"
-import { departments } from "../mocks/department"
-import useForm from "../utils/useForm"
-import { states } from "../mocks/states"
+import BtnForm from "../../components/buttons/button-form/ButtonForm"
+import InputCustom from "../../components/input/InputCustom"
+import DropDownSelect from "../../components/select/Select"
+import SelectData from "../../models/SelectState"
+import StateMapper from "../../UI/mappers/StateMapper"
+import { departments } from "../../mocks/department"
+import useForm from "../../utils/useForm"
+import { states } from "../../mocks/states"
 import { useState } from "react"
 import { Modal } from "@thibaud_s-dev/react-modal-custom"
-import ButtonModal from "../components/buttons/button-modal/ButtonModal"
+import ButtonModal from "../../components/buttons/button-modal/ButtonModal"
 import { useNavigate } from "react-router-dom"
-import DatePickerInput from "../components/date-picker/DatePicker"
+import DatePickerInput from "../../components/date-picker/DatePicker"
 import {
 	contentErrorStyle,
 	contentValidStyle,
 	footerStyle
-} from "../components/modal/customStyleModal"
-import useEmployees from "../context/EmployeesContext"
-import Employee from "../models/Employee"
+} from "../../components/modal/customStyleModal"
+import useEmployees from "../../context/EmployeesContext"
+import Employee from "../../models/Employee"
 import { v4 as uuidv4 } from "uuid"
+import {
+	FlexWrapper,
+	FormContainer,
+	Infos,
+	InfosInputContainer,
+	Label,
+	FieldSet,
+	Legend,
+	InputContainerInField,
+	ButtonContainer,
+	ImageContainer
+} from "./styles"
 
-const FormContainer = styled.div`
-	height: auto;
-	width: 50%;
-	background-color: #d4dea3;
-	padding: 25px;
-	display: flex;
-	flex-direction: column;
-	overflow-y: auto;
-	@media screen and (max-width: 800px) {
-		width: 100%;
-	}
-`
-const ImageContainer = styled.div`
-	height: auto;
-	width: 50%;
-	@media screen and (max-width: 800px) {
-		display: none;
-	}
-`
 const Image = styled.img`
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
-`
-const Infos = styled.h2`
-	color: #6e8614;
-	width: 100%;
-	margin-bottom: 20px;
-	@media screen and (max-width: 425px) {
-		font-size: 20px;
-	}
-`
-const Label = styled.label`
-	font-size: 20px;
-	align-self: flex-start;
-	color: white;
-	font-weight: 500;
-	@media screen and (max-width: 760px) {
-		font-size: 16px;
-	}
-`
-const GlobalInputContainerStyle = {
-	display: "flex",
-	alignItems: "center",
-	marginBottom: "30px",
-	justifyContent: "space-between",
-	minWidth: "215px"
-}
-
-const InfosInputContainer = styled.div`
-	max-width: 350px;
-	flex-wrap: wrap;
-	${GlobalInputContainerStyle}
-`
-const InputContainerInField = styled.div`
-	flex-wrap: wrap;
-	width: 100%;
-	max-width: 450px;
-	${GlobalInputContainerStyle}
-`
-const FieldSet = styled.fieldset`
-	border: 3px #6e8614 solid;
-	border-radius: 15px;
-	padding: 15px;
-	margin-bottom: 20px;
-`
-const Legend = styled.legend`
-	margin-left: 20px;
-	color: #6e8614;
-	padding: 0 8px;
-	font-size: 24px;
-	font-weight: 600;
-	@media screen and (max-width: 425px) {
-		font-size: 20px;
-	}
-`
-const ButtonContainer = styled.div`
-	width: 220px;
-	display: flex;
-	justify-content: space-between;
-`
-const FlexWrapper = styled.div`
-	display: flex;
-	width: 100%;
-	height: 100%;
 `
 
 function CreateEmployee(props: { title: string }) {
@@ -132,7 +63,7 @@ function CreateEmployee(props: { title: string }) {
 		handleChangeDatePicker
 	} = useForm()
 
-	const { addEmployee, employees, removeEmployee } = useEmployees()
+	const { addEmployee, employees } = useEmployees()
 
 	const [isSelectReset, setIsSelectReset] = useState(false)
 	const [isDateReset, setIsDateReset] = useState(false)
