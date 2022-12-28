@@ -32,7 +32,7 @@ function DatePickerInput(props: {
 		clearInput(isReset)
 		errorStyle.getStyleError(name, isValid)
 	}, [isReset, isValid])
-	
+
 	const handleOnCloseCalendar = (date: Date | null, id: string) => {
 		setIsValid(onCloseCalendar(date, id))
 		setErrorMessage(error(date, id))
@@ -42,6 +42,7 @@ function DatePickerInput(props: {
 		<>
 			<DatePicker
 				selected={startDate}
+				dateFormat="yyyy/MM/dd"
 				placeholderText="mm/dd/yyyy"
 				onChange={(date) => {
 					setStartDate(date)

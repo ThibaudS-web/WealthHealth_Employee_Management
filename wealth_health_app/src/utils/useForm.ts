@@ -32,14 +32,15 @@ function useForm() {
 	}
 
 	const handleChangeDatePicker = (date: Date, name: string) => {
-		const formattedDate = date?.toLocaleDateString("en-US").replaceAll("/", "-").split("-")
+		const formattedDate = date?.toLocaleDateString("fr-FR").replaceAll("/", "-").split("-")
 
 		const year = formattedDate.at(2)
-		const month = formattedDate.at(0)
-		const day = formattedDate.at(1)
+		const month = formattedDate.at(1)
+		const day = formattedDate.at(0)
 
 		const requiredFormatDate = [year, month, day].join("-")
-
+		console.log(formattedDate)
+		console.log(requiredFormatDate)
 		setValues({
 			...values,
 			[name]: requiredFormatDate
@@ -51,7 +52,7 @@ function useForm() {
 			const { value } = e
 			setValues({
 				...values,
-				[name]: value
+				[name]: value[0].toUpperCase() + value.slice(1)
 			})
 		}
 	}
