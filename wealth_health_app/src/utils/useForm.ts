@@ -50,9 +50,10 @@ function useForm() {
 	const handleChangeSelect = (e: SingleValue<{ value: string; label: string }>, name: string) => {
 		if (e) {
 			const { value } = e
+			console.log(value)
 			setValues({
 				...values,
-				[name]: value[0].toUpperCase() + value.slice(1)
+				[name]: value
 			})
 		}
 	}
