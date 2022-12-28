@@ -8,14 +8,15 @@ import { departments } from "../../mocks/department"
 import useForm from "../../utils/useForm"
 import { states } from "../../mocks/states"
 import { useState } from "react"
-import { Modal } from "@thibaud_s-dev/react-modal-custom"
+import { Modal } from "thibaud_s-dev-react-modal-custom"
 import ButtonModal from "../../components/buttons/button-modal/ButtonModal"
 import { useNavigate } from "react-router-dom"
 import DatePickerInput from "../../components/date-picker/DatePicker"
 import {
 	contentErrorStyle,
 	contentValidStyle,
-	footerStyle
+	footerStyle,
+	titleStyle
 } from "../../components/modal/customStyleModal"
 import useEmployees from "../../context/EmployeesContext"
 import Employee from "../../models/Employee"
@@ -102,7 +103,6 @@ function CreateEmployee(props: { title: string }) {
 	const handleSubmit = (e: { preventDefault: () => void }) => {
 		e.preventDefault()
 		if (isValidateForm()) {
-			console.log(employees)
 			addEmployee(
 				new Employee(
 					employeeId,
@@ -270,6 +270,7 @@ function CreateEmployee(props: { title: string }) {
 							cross
 							overlayClosure
 							title="HRnet"
+							titleStyle={titleStyle}
 							contentStyle={onErrorModal ? contentErrorStyle : contentValidStyle}
 							footerStyle={footerStyle}
 							footerContent={

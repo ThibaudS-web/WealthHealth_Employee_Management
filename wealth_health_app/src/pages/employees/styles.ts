@@ -41,10 +41,14 @@ export const TableContainer = styled.div`
 	min-height: 59vh;
 	overflow-y: auto;
 	margin-top: 2rem;
+	&:-webkit-scrollbar {
+		color: blue
+	}
 	@media screen and (max-width: 800px) {
 		border-radius: 0;
 	}
 `
+
 export const Label = styled.label`
 	font-size: 20px;
 	margin-right: 10px;
@@ -72,5 +76,8 @@ export const DevBtn = styled.button`
 	&:hover {
 		background-color: #6e8614;
 		color: #ffffff;
+	}
+	:disabled {
+		cursor: not-allowed;
 	}
 `
