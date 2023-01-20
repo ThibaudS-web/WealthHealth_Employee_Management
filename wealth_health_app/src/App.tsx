@@ -9,7 +9,6 @@ import Employees from "./pages/employees/Employees"
 
 import { EmployeesProvider } from "./context/EmployeesContext"
 
-
 const GlobalStyles = createGlobalStyle`
     * {
         margin: 0;
@@ -21,7 +20,6 @@ const GlobalStyles = createGlobalStyle`
 `
 
 function App() {
-
 	return (
 		<>
 			<EmployeesProvider>

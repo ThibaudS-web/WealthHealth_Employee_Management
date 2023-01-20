@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { SingleValue } from "react-select"
-import ErrorMessage from "./ErrorMessage"
-import ValidInput from "./ValidInput"
+import ErrorMessage from "../../utils/ErrorMessage"
+import ValidInput from "../../utils/ValidInput"
+import { InitialeStateValidInput, IntialeStateValuesInput } from "./InitialeStateInterface"
 
 function useForm() {
 	const inputValidation = new ValidInput()
@@ -19,9 +20,9 @@ function useForm() {
 		department: null
 	}
 
-	const [values, setValues] = useState(initialState)
+	const [values, setValues] = useState<IntialeStateValuesInput>(initialState)
 
-	const [validSuccessForm, setValidSuccessForm] = useState(initialState)
+	const [validSuccessForm, setValidSuccessForm] = useState<InitialeStateValidInput>(initialState)
 
 	const handleChange = (e: { target: { name: string; value: string } }) => {
 		let { name, value } = e.target
@@ -32,15 +33,14 @@ function useForm() {
 	}
 
 	const handleChangeDatePicker = (date: Date, name: string) => {
-		const formattedDate = date?.toLocaleDateString("fr-FR").replaceAll("/", "-").split("-")
+		const formattedDate = date?.toLocaleDateString("us-US").replaceAll("/", "-").split("-")
 
 		const year = formattedDate.at(2)
 		const month = formattedDate.at(1)
 		const day = formattedDate.at(0)
 
 		const requiredFormatDate = [year, month, day].join("-")
-		console.log(formattedDate)
-		console.log(requiredFormatDate)
+
 		setValues({
 			...values,
 			[name]: requiredFormatDate
@@ -50,7 +50,7 @@ function useForm() {
 	const handleChangeSelect = (e: SingleValue<{ value: string; label: string }>, name: string) => {
 		if (e) {
 			const { value } = e
-			console.log(value)
+
 			setValues({
 				...values,
 				[name]: value
@@ -97,7 +97,7 @@ function useForm() {
 		return error.getErrorMessage(value, id)
 	}
 
-	const getErrorDatePicker = (value: Date, id: string) => {
+	const getErrorDatePicker = (value: string, id: string) => {
 		return error.getErrorMessage(value, id)
 	}
 
@@ -124,4 +124,4 @@ function useForm() {
 	}
 }
 
-export default useForm
+export { useForm }

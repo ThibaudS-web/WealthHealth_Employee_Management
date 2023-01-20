@@ -42,8 +42,9 @@ function DatePickerInput(props: {
 		<>
 			<DatePicker
 				selected={startDate}
+				data-testid={id}
 				dateFormat="yyyy/MM/dd"
-				placeholderText="mm/dd/yyyy"
+				placeholderText="yyyy/MM/dd"
 				onChange={(date) => {
 					setStartDate(date)
 					setValueOnChange(date, name)

@@ -1,11 +1,10 @@
-import styled from "styled-components"
 import BtnForm from "../../components/buttons/button-form/ButtonForm"
 import InputCustom from "../../components/input/InputCustom"
 import DropDownSelect from "../../components/select/Select"
 import SelectData from "../../models/SelectState"
 import StateMapper from "../../UI/mappers/StateMapper"
 import { departments } from "../../mocks/department"
-import useForm from "../../utils/useForm"
+import { useForm } from "../../hooks/useForm"
 import { states } from "../../mocks/states"
 import { useState } from "react"
 import { Modal } from "thibaud_s-dev-react-modal-custom"
@@ -31,14 +30,9 @@ import {
 	Legend,
 	InputContainerInField,
 	ButtonContainer,
-	ImageContainer
+	ImageContainer,
+	Image
 } from "./styles"
-
-const Image = styled.img`
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
-`
 
 function CreateEmployee(props: { title: string }) {
 	document.title = props.title
@@ -128,7 +122,7 @@ function CreateEmployee(props: { title: string }) {
 		<>
 			<FlexWrapper>
 				<FormContainer>
-					<form onSubmit={handleSubmit} onReset={handleFormReset}>
+					<form data-testid="form" onSubmit={handleSubmit} onReset={handleFormReset}>
 						<Infos>Informations</Infos>
 						<InfosInputContainer>
 							<Label htmlFor="firstName">First name</Label>
@@ -294,7 +288,7 @@ function CreateEmployee(props: { title: string }) {
 								</>
 							}
 						>
-							{onErrorModal ? "Error: Invalid Form! " : "New employee created!"}
+							{onErrorModal ? "Error: Invalid Form!" : "New employee created!"}
 						</Modal>
 					)}
 				</FormContainer>

@@ -1,16 +1,6 @@
 import Employee from "../models/Employee"
 import { ActionsKind } from "./Actions"
-
-//TODO: Need to be moved in other file
-export class EmployeeListState {
-	private data = localStorage.getItem("employees")
-	employees: Employee[] = this.data ? JSON.parse(this.data) : []
-
-	addEmployees(employee: Employee) {
-		this.employees.push(employee)
-		localStorage.setItem("employees", JSON.stringify(this.employees))
-	}
-}
+import { EmployeeListState } from "./EmployeeListStateInterface"
 
 export const initialState = new EmployeeListState()
 

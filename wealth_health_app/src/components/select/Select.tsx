@@ -40,7 +40,7 @@ function DropDownSelect(props: {
 		<>
 			<Select
 				ref={selectRef}
-				placeholder={`Select ${name}`}
+				placeholder="Select State"
 				name={name}
 				id={id}
 				onBlur={onBlur}

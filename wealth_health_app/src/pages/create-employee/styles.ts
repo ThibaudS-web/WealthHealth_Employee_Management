@@ -19,6 +19,11 @@ export const ImageContainer = styled.div`
 		display: none;
 	}
 `
+export const Image = styled.img`
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+`
 export const Infos = styled.h2`
 	color: #6e8614;
 	width: 100%;
