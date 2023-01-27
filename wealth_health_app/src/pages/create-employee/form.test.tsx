@@ -1,9 +1,11 @@
-import { fireEvent, render, screen, renderHook, cleanup } from "@testing-library/react"
+import { fireEvent, render, screen, renderHook, cleanup, waitFor } from "@testing-library/react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { EmployeesProvider } from "../../context/EmployeesContext"
+import useEmployees, { ContextEmployee, EmployeesProvider } from "../../context/EmployeesContext"
 import CreateEmployee from "./CreateEmployee"
 import { useForm } from "../../hooks/useForm"
 import { act } from "react-dom/test-utils"
+import Employee from "../../models/Employee"
+import { useContext } from "react"
 
 beforeEach(() => {
 	render(
@@ -19,6 +21,8 @@ beforeEach(() => {
 afterEach(() => {
 	cleanup()
 })
+
+
 
 test("Should have the right values in the inputs on onChange", async () => {
 	const firstname: HTMLInputElement = screen.getByPlaceholderText("Firstname")
@@ -51,32 +55,3 @@ test("Should have the right values in the inputs on onChange", async () => {
 	expect(zipCode.value).toBe("71100")
 	expect(department.value).toBe("Sales")
 })
-
-// test("If form is ok, should open modal 'with New employee created!'", () => {
-// 	// useForm.mockReturnValue({
-// 	// 	isValidateForm: () => true
-// 	// })
-
-// 	vi.mock("../../utils/useForm.ts", async () => {
-// 		const useForm: any = await vi.importActual("../../utils/useForm.ts")
-// 		return {
-// 			...useForm,
-// 			isValidateForm: vi.fn(() => true)
-// 		}
-// 	})
-
-// 	fireEvent.submit(screen.getByTestId("form"))
-
-// 	expect(screen.getByText("New employee created!")).toBeTruthy()
-
-	// const mock = vi.fn().mockImplementation(() => true)
-	// const { result } = renderHook(() => useForm())
-	// result.current.isValidateForm = () => true
-	// expect(result.current.isValidateForm()).toBe(true)
-	// console.log("resultOfFormValidation : ", result.current.isValidateForm())
-	// const spyOnValidateForm = vi.spyOn(result.current, "isValidateForm")
-	// result.current.isValidateForm()
-	// expect(spyOnValidateForm).toHaveBeenCalledOnce()
-// })
-
-// // test("If form is invalid, should open modal 'Error: Invalid Form!'")

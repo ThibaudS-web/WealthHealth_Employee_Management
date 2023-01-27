@@ -47,7 +47,7 @@ class ValidInput {
 	}
 
 	private isZipCodeValid(value: string): boolean {
-		//Only Numbers
+		//Only Numbers, 5 numbers
 		const zipCodeRegExp = new RegExp("[0-9]{5}$", "g")
 		return zipCodeRegExp.test(value)
 	}

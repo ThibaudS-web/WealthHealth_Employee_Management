@@ -1,4 +1,4 @@
-import useEmployeesProvider from "../../context/EmployeesContext"
+import useEmployees from "../../context/EmployeesContext"
 import CustomTable from "../../components/table/Table"
 import { useState } from "react"
 import Employee from "../../models/Employee"
@@ -11,7 +11,7 @@ function Employees(props: { title: string }) {
 
 	const mock = new EmployeeMock()
 
-	const { employees, addEmployee } = useEmployeesProvider()
+	const { employees, addEmployee } = useEmployees()
 
 	const [employeesData, setEmployeesData] = useState<Employee[]>(employees)
 

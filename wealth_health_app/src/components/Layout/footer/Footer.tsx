@@ -1,4 +1,5 @@
 import { Container, Copyright } from "./footerStyle"
+
 function Footer() {
 	return (
 		<Container>

@@ -2,24 +2,18 @@ import { createContext, useReducer, useContext } from "react"
 import Employee from "../models/Employee"
 import { ActionsKind } from "../reducers/Actions"
 import employeesReducer, { initialState } from "../reducers/employeesReducer"
+import { ContextEmployee } from "./ContextEmployeeInterface"
 
 const EmployeesContext = createContext<null | ContextEmployee>(null)
 
-interface ContextEmployee {
-	employees: Employee[]
-	addEmployee: (employee: Employee) => void
-}
-
 export const EmployeesProvider = (props: { children: any }) => {
-	const [state, dispatch] = useReducer(employeesReducer, initialState)
+	const [_state, dispatch] = useReducer(employeesReducer, initialState)
 	const addEmployee = (employee: Employee) => {
 		dispatch({
 			type: ActionsKind.ADD_EMPLOYEE,
 			payload: employee
 		})
 	}
-
-	console.log("state", state)
 
 	const value: ContextEmployee = {
 		employees: initialState.employees,
@@ -30,12 +24,12 @@ export const EmployeesProvider = (props: { children: any }) => {
 }
 
 const useEmployeesProvider = () => {
-	const context: ContextEmployee = useContext(EmployeesContext)!!
+	const context = useContext(EmployeesContext)!!
 
 	if (context === undefined) {
 		throw new Error("useEmployees must be used within EmployeesContext")
 	}
-	console.log()
+
 	return context
 }
 

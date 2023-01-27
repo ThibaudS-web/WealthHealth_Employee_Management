@@ -64,7 +64,7 @@ test("All inputs are true for the validation, the methode isValidateForm should 
 		})
 	})
 
-	expect(result.current.isValidateForm()).toBe(true)
+	expect(result.current.isValidateForm()).toBeTruthy()
 })
 
 test("Once input is false for the validation, the methode isValidateForm should return false", () => {
@@ -82,7 +82,7 @@ test("Once input is false for the validation, the methode isValidateForm should 
 		department: true
 	})
 
-	expect(result.current.isValidateForm()).toBe(false)
+	expect(result.current.isValidateForm()).toBeFalsy()
 })
 
 test("Should return error message for firstName Input", () => {
@@ -191,7 +191,7 @@ test.each([
 	[isValidSelectInput("Arizona", "state"), result.current.validSuccessForm.state]
 ])(
 	"The isValid methods should return true and set validSuccessForm properties at true",
-	(isValidFunction, isValidValue) => {
+	(_isValidFunction, isValidValue) => {
 		expect(isValidValue).toBeTruthy()
 	}
 )
