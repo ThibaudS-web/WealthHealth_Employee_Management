@@ -9,6 +9,8 @@ import { BackgroundEmployeesPage, Label, Input, DevBtn, TableContainer } from ".
 function Employees(props: { title: string }) {
 	document.title = props.title
 
+	const isDevEnv = process.env.NODE_ENV === "development"
+	
 	const mock = new EmployeeMock()
 
 	const { employees, addEmployee } = useEmployees()
@@ -33,11 +35,13 @@ function Employees(props: { title: string }) {
 					<Label htmlFor="filterInput">Find an employee</Label>
 					<Input id="filterInput" onChange={handleSetValue} placeholder="Search..." />
 					{/* this button are present only for dev/test app  */}
-					<DevBtn disabled={employees.length >= 100} onClick={handleAddMockData}>
-						{employees.length >= 100
-							? "Maximum employees reached"
-							: "Add Employees - dev feature"}
-					</DevBtn>
+					{isDevEnv ? (
+						<DevBtn disabled={employees.length >= 100} onClick={handleAddMockData}>
+							{employees.length >= 100
+								? "Maximum employees reached"
+								: "Add Employees - dev feature"}
+						</DevBtn>
+					) : null}
 				</div>
 				<TableContainer>
 					{employees.length > 0 ? (
