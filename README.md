@@ -1,7 +1,7 @@
 # WealthHealth_Employee_Management
 
 This project uses ViteJS as a fast development environment for front-end development.  
-Built using ReactJS, contextAPI, Typescript, Testing library and Jest.
+Built using **ReactJS**, **contextAPI**, **Typescript**, **Testing library** and **Jest**.
 
 ## Installation
 
