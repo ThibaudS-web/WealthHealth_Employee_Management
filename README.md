@@ -34,3 +34,7 @@ The generated files will be available in the dist/ directory.
 
 Note
 Be sure to check the ViteJS documentation to learn more about its features and how to use them.
+
+## Lighthouse
+![image](https://user-images.githubusercontent.com/66798720/215996257-d9cc65eb-80d9-4c95-b2a7-2243512d2f3d.png)
+
