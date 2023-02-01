@@ -36,5 +36,4 @@ Note
 Be sure to check the ViteJS documentation to learn more about its features and how to use them.
 
 ## Lighthouse
-![image](https://user-images.githubusercontent.com/66798720/215996257-d9cc65eb-80d9-4c95-b2a7-2243512d2f3d.png)
-
+![image](https://user-images.githubusercontent.com/66798720/215996432-6c43f02d-14a9-4a7b-a86b-2ce8fdcef863.png)
