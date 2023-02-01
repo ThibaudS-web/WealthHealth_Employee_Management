@@ -62,7 +62,7 @@ export const linkStyle = (props: { isActive: boolean }) => ({
 	textDecoration: "none",
 	padding: "10px",
 	display: "block",
-	color: props.isActive ? "white" : "#6e8614",
-	backgroundColor: props.isActive ? "#6e8614" : "#ffffff",
-	border: "1px solid #6e8614"
+	color: props.isActive ? "white" : "#5b700c",
+	backgroundColor: props.isActive ? "#5b700c" : "#ffffff",
+	border: "1px solid #5b700c"
 })

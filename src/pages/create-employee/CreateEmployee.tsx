@@ -177,11 +177,11 @@ function CreateEmployee(props: { title: string }) {
 						<FieldSet>
 							<Legend>Address</Legend>
 							<InputContainerInField>
-								<Label htmlFor="state">State</Label>
 								<DropDownSelect
 									isReset={isSelectReset}
 									id="state"
-									name="state"
+									name="react-select-2-input"
+									label="State"
 									setReset={handleSelectReset}
 									error={getErrorSelect}
 									setValueOnChange={handleChangeSelect}
@@ -231,11 +231,11 @@ function CreateEmployee(props: { title: string }) {
 							</InputContainerInField>
 						</FieldSet>
 						<InfosInputContainer>
-							<Label htmlFor="department">Department</Label>
 							<DropDownSelect
 								isReset={isSelectReset}
 								id="department"
-								name="department"
+								name="react-select-3-input"
+								label="Department"
 								setReset={handleSelectReset}
 								error={getErrorSelect}
 								setValueOnBlur={isValidSelect}
@@ -246,15 +246,15 @@ function CreateEmployee(props: { title: string }) {
 						<ButtonContainer>
 							<BtnForm
 								type="reset"
-								role="cancel"
+								content="cancel"
 								textColor="#6e8615"
 								background="#ffffff"
 							/>
 							<BtnForm
 								type="submit"
-								role="register"
+								content="register"
 								textColor="#ffffff"
-								background="#6e8615"
+								background="#5b700c"
 							/>
 						</ButtonContainer>
 					</form>
@@ -293,7 +293,7 @@ function CreateEmployee(props: { title: string }) {
 					)}
 				</FormContainer>
 				<ImageContainer>
-					<Image src="/src/assets/wealth_health_location.jpg" />
+					<Image alt="image wealth health" src="/images/wealth_health_location.webp" />
 				</ImageContainer>
 			</FlexWrapper>
 		</>

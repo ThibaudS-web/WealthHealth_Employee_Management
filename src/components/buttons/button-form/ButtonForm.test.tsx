@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react"
 import Button from "./ButtonForm"
 
 test("Displays the cancel button", () => {
-	render(<Button type="button" background="#ffffff" textColor="#000000" role="cancel"></Button>)
+	render(<Button type="button" background="#ffffff" textColor="#000000" content="cancel"></Button>)
 
 	const button = screen.getByText("cancel")
 
@@ -11,7 +11,9 @@ test("Displays the cancel button", () => {
 })
 
 test("Displays the register button", () => {
-	render(<Button type="button" background="#ffffff" textColor="#000000" role="register"></Button>)
+	render(
+		<Button type="button" background="#ffffff" textColor="#000000" content="register"></Button>
+	)
 
 	const button = screen.getByText("register")
 

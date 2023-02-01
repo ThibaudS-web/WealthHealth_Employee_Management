@@ -19,7 +19,7 @@
 	min-width: 150px !important;
 }
 ::placeholder {
-	opacity: 0.4;
+	opacity: 1;
 }
 
 input[name="birthday"] {
@@ -43,4 +43,9 @@ input[name="startDate"] {
 
 .react-datepicker__day--keyboard-selected {
 	background-color: #6e8614 !important;
+}
+
+.css-qfeakm-placeholder {
+	color: #757575 !important;
+	opacity: 1 !important;
 }

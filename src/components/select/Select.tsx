@@ -1,18 +1,21 @@
 import { useEffect, useRef, useState } from "react"
 import Select from "react-select"
+import { Label } from "../../pages/create-employee/styles"
 import { customStyle, Error } from "./selectStyle"
 
 function DropDownSelect(props: {
 	options: { value: string; label: string }[]
 	name: string
 	id: string
+	label: string
 	error: Function
 	isReset: boolean
 	setReset: Function
 	setValueOnChange: Function
 	setValueOnBlur: Function
 }) {
-	const { options, setValueOnChange, name, setValueOnBlur, id, error, isReset, setReset } = props
+	const { options, setValueOnChange, name, setValueOnBlur, id, error, isReset, setReset, label } =
+		props
 
 	const selectRef = useRef<any>()
 
@@ -38,9 +41,10 @@ function DropDownSelect(props: {
 
 	return (
 		<>
+			<Label htmlFor={name}>{label}</Label>
 			<Select
 				ref={selectRef}
-				placeholder="Select State"
+				placeholder={`Select ${label}`}
 				name={name}
 				id={id}
 				onBlur={onBlur}

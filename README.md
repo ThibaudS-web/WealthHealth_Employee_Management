@@ -29,6 +29,7 @@ To build your application for production, use the following command:
 `npm run build`
 or
 `yarn build`  
+For run the build and the preview : ```npm run prod```   
 The generated files will be available in the dist/ directory.
 
 Note

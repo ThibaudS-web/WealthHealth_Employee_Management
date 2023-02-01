@@ -10,10 +10,11 @@ import {
 } from "./headerStyle"
 
 function Header() {
+	console.log(process.env.NODE_ENV)
 	return (
 		<Container>
 			<ChildContainer>
-				<Logo src="/src/assets/wealthHealth_logo.jpg" />
+				<Logo alt="Wealth Health logo" src="/images/wealthHealth_logo.webp" />
 				<HeaderTitle>HRnet - Create employee</HeaderTitle>
 			</ChildContainer>
 			<nav>

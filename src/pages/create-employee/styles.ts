@@ -25,7 +25,7 @@ export const Image = styled.img`
 	object-fit: cover;
 `
 export const Infos = styled.h2`
-	color: #6e8614;
+	color: #5b700c;
 	width: 100%;
 	margin-bottom: 20px;
 	@media screen and (max-width: 425px) {
@@ -35,7 +35,7 @@ export const Infos = styled.h2`
 export const Label = styled.label`
 	font-size: 20px;
 	align-self: flex-start;
-	color: white;
+	color: #373737;
 	font-weight: 500;
 	@media screen and (max-width: 760px) {
 		font-size: 16px;
@@ -61,14 +61,14 @@ export const InputContainerInField = styled.div`
 	${GlobalInputContainerStyle}
 `
 export const FieldSet = styled.fieldset`
-	border: 3px #6e8614 solid;
+	border: 3px #5b700c solid;
 	border-radius: 15px;
 	padding: 15px;
 	margin-bottom: 20px;
 `
 export const Legend = styled.legend`
 	margin-left: 20px;
-	color: #6e8614;
+	color: #5b700c;
 	padding: 0 8px;
 	font-size: 24px;
 	font-weight: 600;

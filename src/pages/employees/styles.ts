@@ -19,9 +19,7 @@ export const Input = styled.input`
 	color: #6e8614;
 	width: 250px;
 	margin-right: 2rem;
-	::placeholder {
-		opacity: 0.4;
-	}
+
 	@media screen and (max-width: 760px) {
 		font-size: 14px;
 	}
@@ -42,7 +40,7 @@ export const TableContainer = styled.div`
 	overflow-y: auto;
 	margin-top: 2rem;
 	&:-webkit-scrollbar {
-		color: blue
+		color: blue;
 	}
 	@media screen and (max-width: 800px) {
 		border-radius: 0;
@@ -52,7 +50,7 @@ export const TableContainer = styled.div`
 export const Label = styled.label`
 	font-size: 20px;
 	margin-right: 10px;
-	color: white;
+	color: #373737;
 	font-weight: 500;
 	@media screen and (max-width: 760px) {
 		font-size: 16px;

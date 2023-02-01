@@ -3,11 +3,11 @@ import { BtnForm } from "./buttonFormStyle"
 function Button(props: {
 	background: string
 	textColor: string
-	role: "register" | "cancel"
+	content: "register" | "cancel"
 	type: "button" | "submit" | "reset"
 	onClick?: any
 }) {
-	const { textColor, background, role, type, onClick } = props
+	const { textColor, background, type, onClick, content } = props
 
 	return (
 		<BtnForm
@@ -15,9 +15,9 @@ function Button(props: {
 			type={type}
 			background={background}
 			textColor={textColor}
-			role={role}
+			role="button"
 		>
-			{role}
+			{content}
 		</BtnForm>
 	)
 }

@@ -14,9 +14,7 @@ export const Input = styled.input<IInput>`
 	width: 65%;
 	min-width: 150px;
 	border: ${(props) => (props.isValid || props.isValid === null ? "none" : "2px red solid")};
-	::placeholder {
-		opacity: 0.4;
-	}
+	
 	@media screen and (max-width: 760px) {
 		font-size: 14px;
 	}

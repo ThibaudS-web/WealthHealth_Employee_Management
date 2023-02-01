@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1674811146656" clover="3.2.0">
-  <project timestamp="1674811146656" name="All files">
-    <metrics statements="1415" coveredstatements="1266" conditionals="125" coveredconditionals="104" methods="104" coveredmethods="74" elements="1644" coveredelements="1444" complexity="0" loc="1415" ncloc="1415" packages="14" files="27" classes="27"/>
+<coverage generated="1675234924055" clover="3.2.0">
+  <project timestamp="1675234924055" name="All files">
+    <metrics statements="1412" coveredstatements="1263" conditionals="125" coveredconditionals="104" methods="104" coveredmethods="74" elements="1641" coveredelements="1441" complexity="0" loc="1412" ncloc="1412" packages="14" files="27" classes="27"/>
     <package name="UI.mappers">
       <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="StateMapper.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\UI\mappers\StateMapper.ts">
+      <file name="StateMapper.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\UI\mappers\StateMapper.ts">
         <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -20,7 +20,7 @@
     </package>
     <package name="components.buttons.button-form">
       <metrics statements="43" coveredstatements="43" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
-      <file name="ButtonForm.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\buttons\button-form\ButtonForm.tsx">
+      <file name="ButtonForm.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\buttons\button-form\ButtonForm.tsx">
         <metrics statements="25" coveredstatements="25" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -48,7 +48,7 @@
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
       </file>
-      <file name="buttonFormStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\buttons\button-form\buttonFormStyle.ts">
+      <file name="buttonFormStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\buttons\button-form\buttonFormStyle.ts">
         <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -72,7 +72,7 @@
     </package>
     <package name="components.buttons.button-modal">
       <metrics statements="42" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <file name="ButtonModal.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\buttons\button-modal\ButtonModal.tsx">
+      <file name="ButtonModal.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\buttons\button-modal\ButtonModal.tsx">
         <metrics statements="21" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -96,7 +96,7 @@
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
       </file>
-      <file name="buttonModalStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\buttons\button-modal\buttonModalStyle.ts">
+      <file name="buttonModalStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\buttons\button-modal\buttonModalStyle.ts">
         <metrics statements="21" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -123,7 +123,7 @@
     </package>
     <package name="components.date-picker">
       <metrics statements="101" coveredstatements="74" conditionals="11" coveredconditionals="6" methods="10" coveredmethods="5"/>
-      <file name="DatePicker.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\date-picker\DatePicker.tsx">
+      <file name="DatePicker.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\date-picker\DatePicker.tsx">
         <metrics statements="61" coveredstatements="55" conditionals="6" coveredconditionals="4" methods="5" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -187,7 +187,7 @@
         <line num="60" count="1" type="stmt"/>
         <line num="61" count="1" type="stmt"/>
       </file>
-      <file name="datePickerStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\date-picker\datePickerStyle.ts">
+      <file name="datePickerStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\date-picker\datePickerStyle.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -195,7 +195,7 @@
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
       </file>
-      <file name="setOnError.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\date-picker\setOnError.ts">
+      <file name="setOnError.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\date-picker\setOnError.ts">
         <metrics statements="35" coveredstatements="14" conditionals="5" coveredconditionals="2" methods="4" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -236,7 +236,7 @@
     </package>
     <package name="components.input">
       <metrics statements="101" coveredstatements="94" conditionals="11" coveredconditionals="9" methods="8" coveredmethods="4"/>
-      <file name="InputCustom.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\input\InputCustom.tsx">
+      <file name="InputCustom.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\input\InputCustom.tsx">
         <metrics statements="75" coveredstatements="68" conditionals="8" coveredconditionals="7" methods="6" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -314,7 +314,7 @@
         <line num="74" count="1" type="stmt"/>
         <line num="75" count="1" type="stmt"/>
       </file>
-      <file name="inputStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\input\inputStyle.ts">
+      <file name="inputStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\input\inputStyle.ts">
         <metrics statements="26" coveredstatements="26" conditionals="3" coveredconditionals="2" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -346,7 +346,7 @@
     </package>
     <package name="components.modal">
       <metrics statements="21" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <file name="customStyleModal.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\modal\customStyleModal.ts">
+      <file name="customStyleModal.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\modal\customStyleModal.ts">
         <metrics statements="21" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -373,7 +373,7 @@
     </package>
     <package name="components.select">
       <metrics statements="94" coveredstatements="85" conditionals="12" coveredconditionals="9" methods="12" coveredmethods="8"/>
-      <file name="Select.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\select\Select.tsx">
+      <file name="Select.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\select\Select.tsx">
         <metrics statements="58" coveredstatements="49" conditionals="5" coveredconditionals="3" methods="4" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -434,7 +434,7 @@
         <line num="57" count="1" type="stmt"/>
         <line num="58" count="1" type="stmt"/>
       </file>
-      <file name="selectStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\components\select\selectStyle.ts">
+      <file name="selectStyle.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\components\select\selectStyle.ts">
         <metrics statements="36" coveredstatements="36" conditionals="7" coveredconditionals="6" methods="8" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -475,9 +475,9 @@
       </file>
     </package>
     <package name="context">
-      <metrics statements="39" coveredstatements="32" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
-      <file name="EmployeesContext.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\context\EmployeesContext.tsx">
-        <metrics statements="39" coveredstatements="32" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
+      <metrics statements="36" coveredstatements="29" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
+      <file name="EmployeesContext.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\context\EmployeesContext.tsx">
+        <metrics statements="36" coveredstatements="29" conditionals="4" coveredconditionals="3" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -486,46 +486,43 @@
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
+        <line num="24" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="31" count="8" type="stmt"/>
+        <line num="26" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="29" count="8" type="cond" truecount="0" falsecount="1"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
         <line num="32" count="8" type="stmt"/>
-        <line num="33" count="8" type="cond" truecount="0" falsecount="1"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="8" type="stmt"/>
-        <line num="37" count="8" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
+        <line num="33" count="8" type="stmt"/>
+        <line num="34" count="8" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
       </file>
     </package>
     <package name="hooks.useForm">
       <metrics statements="128" coveredstatements="126" conditionals="14" coveredconditionals="13" methods="13" coveredmethods="12"/>
-      <file name="index.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\hooks\useForm\index.ts">
+      <file name="index.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\hooks\useForm\index.ts">
         <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
-      <file name="useForm.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\hooks\useForm\useForm.ts">
+      <file name="useForm.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\hooks\useForm\useForm.ts">
         <metrics statements="127" coveredstatements="125" conditionals="13" coveredconditionals="12" methods="12" coveredmethods="11"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -658,11 +655,11 @@
     </package>
     <package name="mocks">
       <metrics statements="241" coveredstatements="241" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-      <file name="department.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\mocks\department.ts">
+      <file name="department.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\mocks\department.ts">
         <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
-      <file name="states.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\mocks\states.ts">
+      <file name="states.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\mocks\states.ts">
         <metrics statements="240" coveredstatements="240" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -908,7 +905,7 @@
     </package>
     <package name="models">
       <metrics statements="47" coveredstatements="47" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
-      <file name="Employee.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\models\Employee.ts">
+      <file name="Employee.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\models\Employee.ts">
         <metrics statements="37" coveredstatements="37" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -948,7 +945,7 @@
         <line num="36" count="1" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
       </file>
-      <file name="SelectState.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\models\SelectState.ts">
+      <file name="SelectState.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\models\SelectState.ts">
         <metrics statements="10" coveredstatements="10" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -964,7 +961,7 @@
     </package>
     <package name="pages.create-employee">
       <metrics statements="391" coveredstatements="324" conditionals="15" coveredconditionals="14" methods="20" coveredmethods="12"/>
-      <file name="CreateEmployee.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\pages\create-employee\CreateEmployee.tsx">
+      <file name="CreateEmployee.tsx" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\pages\create-employee\CreateEmployee.tsx">
         <metrics statements="303" coveredstatements="237" conditionals="4" coveredconditionals="3" methods="8" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1270,7 +1267,7 @@
         <line num="302" count="1" type="stmt"/>
         <line num="303" count="1" type="stmt"/>
       </file>
-      <file name="styles.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\pages\create-employee\styles.ts">
+      <file name="styles.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\pages\create-employee\styles.ts">
         <metrics statements="88" coveredstatements="87" conditionals="11" coveredconditionals="11" methods="12" coveredmethods="11"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1364,13 +1361,13 @@
     </package>
     <package name="reducers">
       <metrics statements="35" coveredstatements="34" conditionals="9" coveredconditionals="7" methods="6" coveredmethods="6"/>
-      <file name="Actions.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\reducers\Actions.ts">
+      <file name="Actions.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\reducers\Actions.ts">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="cond" truecount="2" falsecount="0"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
       </file>
-      <file name="EmployeeListStateInterface.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\reducers\EmployeeListStateInterface.ts">
+      <file name="EmployeeListStateInterface.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\reducers\EmployeeListStateInterface.ts">
         <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1384,7 +1381,7 @@
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="2" type="cond" truecount="1" falsecount="0"/>
       </file>
-      <file name="employeesReducer.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\reducers\employeesReducer.ts">
+      <file name="employeesReducer.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\reducers\employeesReducer.ts">
         <metrics statements="21" coveredstatements="20" conditionals="3" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1411,7 +1408,7 @@
     </package>
     <package name="utils">
       <metrics statements="122" coveredstatements="116" conditionals="39" coveredconditionals="33" methods="15" coveredmethods="15"/>
-      <file name="ErrorMessage.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\utils\ErrorMessage.ts">
+      <file name="ErrorMessage.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\utils\ErrorMessage.ts">
         <metrics statements="62" coveredstatements="58" conditionals="22" coveredconditionals="18" methods="8" coveredmethods="8"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -1476,7 +1473,7 @@
         <line num="61" count="1" type="stmt"/>
         <line num="62" count="1" type="stmt"/>
       </file>
-      <file name="ValidInput.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\wealth_health_app\src\utils\ValidInput.ts">
+      <file name="ValidInput.ts" path="C:\Users\Admin\Desktop\Workspace\DEV\Openclassrooms\Projets_Openclassrooms_concepteur_app_react\Project_14_wealth_health\WealthHealth_Employee_Management\src\utils\ValidInput.ts">
         <metrics statements="60" coveredstatements="58" conditionals="17" coveredconditionals="15" methods="7" coveredmethods="7"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
