@@ -34,6 +34,7 @@ export const TableContainer = styled.div`
 	border-radius: 2rem;
 	max-width: 100%;
 	min-width: 280px;
+	margin-bottom: 20px;
 	padding: 3rem;
 	max-height: 59vh;
 	min-height: 59vh;

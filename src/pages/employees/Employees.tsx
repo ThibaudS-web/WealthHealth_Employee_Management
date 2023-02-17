@@ -10,7 +10,7 @@ function Employees(props: { title: string }) {
 	document.title = props.title
 
 	const isDevEnv = process.env.NODE_ENV === "development"
-	
+
 	const mock = new EmployeeMock()
 
 	const { employees, addEmployee } = useEmployees()

@@ -5,7 +5,7 @@ export const DivFlex = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	overflow: hidden;
+	/* overflow: hidden; */
 `
 
 export const Main = styled.main`
