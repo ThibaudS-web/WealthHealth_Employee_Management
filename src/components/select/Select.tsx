@@ -49,7 +49,7 @@ function DropDownSelect(props: {
 				id={id}
 				onBlur={onBlur}
 				onChange={(e) => {
-					setValueOnChange(e, name)
+					setValueOnChange(e, id)
 				}}
 				options={options}
 				styles={customStyle(isValid)}

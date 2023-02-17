@@ -58,6 +58,8 @@ function CreateEmployee(props: { title: string }) {
 		handleChangeDatePicker
 	} = useForm()
 
+	console.log(values)
+
 	const { addEmployee, employees } = useEmployees()
 
 	const [isSelectReset, setIsSelectReset] = useState(false)

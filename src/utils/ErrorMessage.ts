@@ -54,7 +54,7 @@ class ErrorMessage {
 			case "department":
 				return this.getErrorSelect()
 			default:
-				return "unknown input"
+				throw new Error("unknown input")
 		}
 	}
 }

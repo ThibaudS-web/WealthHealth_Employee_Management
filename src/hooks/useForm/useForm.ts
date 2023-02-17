@@ -47,13 +47,13 @@ function useForm() {
 		})
 	}
 
-	const handleChangeSelect = (e: SingleValue<{ value: string; label: string }>, name: string) => {
+	const handleChangeSelect = (e: SingleValue<{ value: string; label: string }>, id: string) => {
 		if (e) {
 			const { value } = e
-
+			console.log(id)
 			setValues({
 				...values,
-				[name]: value
+				[id]: value
 			})
 		}
 	}
