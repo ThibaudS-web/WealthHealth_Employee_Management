@@ -1,0 +1,8 @@
+{
+    "builds": [
+        {
+            "src": "./vercel.json",
+            "use": "@vercel/static"
+        }
+    ]
+}
