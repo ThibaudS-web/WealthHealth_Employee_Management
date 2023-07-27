@@ -34,14 +34,11 @@ function Employees(props: { title: string }) {
 				<div>
 					<Label htmlFor="filterInput">Find an employee</Label>
 					<Input id="filterInput" onChange={handleSetValue} placeholder="Search..." />
-					{/* this button are present only for dev/test app  */}
-					{isDevEnv ? (
-						<DevBtn disabled={employees.length >= 100} onClick={handleAddMockData}>
-							{employees.length >= 100
-								? "Maximum employees reached"
-								: "Add Employees - dev feature"}
-						</DevBtn>
-					) : null}
+					<DevBtn disabled={employees.length >= 100} onClick={handleAddMockData}>
+						{employees.length >= 100
+							? "Maximum employees reached"
+							: "Add Employees - dev feature"}
+					</DevBtn>
 				</div>
 				<TableContainer>
 					{employees.length > 0 ? (

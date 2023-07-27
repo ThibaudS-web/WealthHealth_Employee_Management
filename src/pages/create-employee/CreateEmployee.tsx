@@ -6,7 +6,7 @@ import StateMapper from "../../UI/mappers/StateMapper"
 import { departments } from "../../mocks/department"
 import { useForm } from "../../hooks/useForm"
 import { states } from "../../mocks/states"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Modal } from "thibaud_s-dev-react-modal-custom"
 import ButtonModal from "../../components/buttons/button-modal/ButtonModal"
 import { useNavigate } from "react-router-dom"
@@ -57,8 +57,6 @@ function CreateEmployee(props: { title: string }) {
 		isValidDatePicker,
 		handleChangeDatePicker
 	} = useForm()
-
-	console.log(values)
 
 	const { addEmployee, employees } = useEmployees()
 
